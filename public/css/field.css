@@ -1,0 +1,582 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,b, u, i, center,
+dl, dt, dd, ol, ul, li,fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline; 
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after, q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+/* 여기까지 초기화 코드 */
+
+body {
+	color:#000;
+	font-family: 'Nanum Gothic', sans-serif;
+	font-size:21px;
+	height:100%;
+	width:100%;
+	overflow:hidden;
+}
+
+hr {
+    margin: 4px 0px;
+	padding: 0;
+	border-bottom: 1px;
+}
+
+#main-screen { /* 메인 스크린(네비바, 지도)*/
+    height:100%;
+	width:100%;
+	overflow:hidden;
+	position:fixed;
+	
+}
+
+/* 여기는 체크박스 설정 */
+input[type=checkbox] {  
+	display: none;  
+}
+
+input[type=checkbox] + label{
+	display: inline-block;  
+	cursor: pointer;  
+	position: relative;  
+	padding-left: 35px;
+	padding-top:2px;
+	padding-bottom:2px;
+	/*margin-right: 15px;*/
+	font-size: 27px;
+}
+
+input[type=checkbox]+ label:before {
+	content: "";  
+	display: inline-block;  
+
+	width: 30px;  
+	height: 30px;  
+
+	margin-right: 10px;  
+	position: absolute;
+	left: 0;  
+	bottom: 1px;  
+	background-color: #ccc;  
+	border-radius: 3px; 
+	box-shadow: inset 0px 1px 1px 0px rgba(0, 0, 0, .3), 0px 1px 0px 0px rgba(255, 255, 255, .8);  
+}
+
+input[type=checkbox]:checked + label:before { 
+	content: "\2713";  /* 체크모양 */
+	text-shadow: 1px 1px 1px rgba(0, 0, 0, .2);  
+	font-size: 27px; 
+	font-weight:800; 
+	color: #fff;  
+	background:#2f87c1;
+	text-align: center;  
+	line-height: 27px;  
+} 
+
+.list-checkbox-null:before { /* 목록 체크박스 기본 */
+	content: "";  
+
+	width: 30px;  
+	height: 30px;  
+
+	position: absolute;
+	left: 0;  
+	bottom: 1px;  
+	background-color: #ccc;  
+	border-radius: 3px; 
+	box-shadow: inset 0px 1px 1px 0px rgba(0, 0, 0, .3), 0px 1px 0px 0px rgba(255, 255, 255, .8);  
+}
+
+.list-checkbox-checked:before { /* 목록 체크박스 체크 추가 */
+	content: "O";  /* 체크모양 */
+	text-shadow: 1px 1px 1px rgba(0, 0, 0, .2);  
+	font-size: 27px; 
+	font-weight:800; 
+	color: #fff;  
+	background:#2f87c1;
+	text-align: center;  
+	line-height: 30px;  
+	
+	width: 30px;  
+	height: 30px;  
+
+	position: absolute;
+	left: 0;  
+	bottom: 1px;  
+	border-radius: 3px; 
+	box-shadow: inset 0px 1px 1px 0px rgba(0, 0, 0, .3), 0px 1px 0px 0px rgba(255, 255, 255, .8);  
+}
+
+.list-checkbox-indeterminate:before { /* 목록 체크박스 엑스 추가 */
+	content: "\2718";  /* 엑스모양 */
+	text-shadow: 1px 1px 1px rgba(0, 0, 0, .2);  
+	font-size: 27px; 
+	font-weight:800; 
+	color: #fff;  
+	background:#2f87c1;
+	text-align: center;  
+	line-height: 30px;  
+	
+	width: 30px;  
+	height: 30px;  
+
+	margin-right: 10px;  
+	position: absolute;
+	left: 0;  
+	bottom: 1px;  
+	border-radius: 3px; 
+	box-shadow: inset 0px 1px 1px 0px rgba(0, 0, 0, .3), 0px 1px 0px 0px rgba(255, 255, 255, .8);  
+}
+
+.list-checkbox-no-visit:before { /* 목록 체크박스 엑스 추가 */
+	content: "방문 금지";  /* 엑스모양 */
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, .2);  
+	font-size: 11px; 
+	font-weight:800; 
+	color: #fff;  
+	background:red;
+	text-align: center;  
+	line-height: 15px;  
+	
+	width: 30px;  
+	height: 30px;  
+
+	margin-right: 10px;  
+	position: absolute;
+	left: 0;  
+	bottom: 1px;  
+	border-radius: 3px; 
+	box-shadow: inset 0px 1px 1px 0px rgba(0, 0, 0, .3), 0px 1px 0px 0px rgba(255, 255, 255, .8);  
+}
+/* 여기까지 체크박스 설정 */
+
+/* 여기는 라디오 버튼 설정 */
+input[type=radio] {  
+	display: none;  
+}
+
+input[type=radio] + label{
+	display: inline-block;  
+	cursor: pointer;  
+	position: relative;  
+	padding-left: 35px;
+	padding-top:2px;
+	padding-bottom:2px;
+	/*margin-right: 15px;*/
+	font-size: 27px;
+}
+
+input[type=radio]+ label:before {
+	content: "";  
+	display: inline-block;  
+
+	width: 30px;  
+	height: 30px;  
+
+	margin-right: 10px;  
+	position: absolute;
+	left: 0;  
+	bottom: 1px;  
+	background-color: #ccc;  
+	border-radius: 3px; 
+	box-shadow: inset 0px 1px 1px 0px rgba(0, 0, 0, .3), 0px 1px 0px 0px rgba(255, 255, 255, .8);  
+}
+
+input[type=radio]:checked + label:before { 
+	content: "\2713";  /* 체크모양 */
+	text-shadow: 1px 1px 1px rgba(0, 0, 0, .2);  
+	font-size: 27px; 
+	font-weight:800; 
+	color: #fff;  
+	background:#2f87c1;
+	text-align: center;  
+	line-height: 27px;  
+} 
+/* 여기까지 라디오 버튼 설정 */
+
+.navbar { /* 네비바 */
+	height:64px;
+	width:100%;
+	position:absolute;
+	top:0px;
+	left:0px;
+	z-index:999;
+	-webkit-box-shadow: 0 1px 2px 0 #aaa;
+	box-shadow: 0 1px 2px 0 #aaa;
+	background-color:#666;
+}
+
+#navbar-logo { /* 네비바 홈 로고 */
+	position:absolute;
+	left:2px;
+	top:2px;
+	width:35px;
+	height:35px;
+}
+
+#navbar-title { /* 네비바 타이틀 */
+	position:absolute;
+	left:44px;
+    top:0px;
+    margin:5px 10px;
+	width:85%;
+	color:#eee;
+	overflow:hidden;
+	text-overflow:ellipsis;
+	white-space:nowrap;
+	font-size:29px;
+}
+
+#navbar-title a {
+	text-decoration: none;
+	color:#eee;
+}
+
+#navbar-menu {
+    position:absolute;
+    top:39px;
+    height: 25px;
+    width: 100%;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #666;
+}
+
+.navbar-menu-list {
+    border-top: 1px solid gray;
+	width:50%;
+    float: left;
+}
+
+.navbar-menu-list a {
+    
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 4px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+#toggle-map-and-list { /* 지도하고 리스트 들어가는 곳 좌우로 움직이게 해야됨 */
+    position:absolute;
+    width:200%;
+	height:calc(100% - 64px);
+	margin:64px 0px 0px 0px;
+	padding-bottom:0px;
+    left:0px;
+
+}
+
+.map-container { /* 지도 들어가는 위치 결정 */
+	padding:0px 0px 0px 0px;
+	width:50%;
+	height:100%;
+	left:50%;
+	overflow:hidden;
+	position:absolute;
+}
+
+#map { /* 지도 */
+	width:100%;
+	height:100%;
+	margin:0px 0px 0px 0px;
+	background-color:#666;
+	padding-bottom:0px;
+}
+
+/* 지도 컨트롤 버튼 설정 */
+.radius_border{border:1px solid #919191;border-radius:5px;}     
+.custom_typecontrol {position:absolute;top:10px;right:10px;overflow:hidden;width:130px;height:30px;margin:0;padding:0;z-index:1;font-size:12px;font-family:'Malgun Gothic', '맑은 고딕', sans-serif;}
+.custom_typecontrol span {display:block;width:65px;height:30px;float:left;text-align:center;line-height:30px;cursor:pointer;}
+.custom_typecontrol .btn {background:#fff;background:linear-gradient(#fff,  #e6e6e6);}       
+.custom_typecontrol .btn:hover {background:#f5f5f5;background:linear-gradient(#f5f5f5,#e3e3e3);}
+.custom_typecontrol .btn:active {background:#e6e6e6;background:linear-gradient(#e6e6e6, #fff);}    
+.custom_typecontrol .selected_btn {color:#fff;background:#425470;background:linear-gradient(#425470, #5b6d8a);}
+.custom_typecontrol .selected_btn:hover {color:#fff;}   
+.custom_zoomcontrol {position:absolute;bottom:10px;right:10px;width:36px;height:80px;overflow:hidden;z-index:1;background-color:#f5f5f5;} 
+.custom_zoomcontrol span {display:block;width:36px;height:40px;text-align:center;cursor:pointer;}     
+.custom_zoomcontrol span img {width:15px;height:15px;padding:12px 0;border:none;}             
+.custom_zoomcontrol span:first-child{border-bottom:1px solid #bfbfbf;}            
+/* 지도 컨트롤 버튼 설정 */
+
+.list-icon { /* 세줄 아이콘 위치 */
+	position:absolute;
+	left:10px;
+	top:5px;
+	width:30px;
+	height:30px;
+}
+
+.setting-menu-icon { /* 세줄 아이콘 위치 */
+	position:absolute;
+	right:0px;
+	top:5px;
+	width:30px;
+	height:30px;
+}
+
+#houses-list-container {
+	width:50%;
+	position:absolute;
+	z-index:1000;
+	background-color:gray;
+	left:0px;
+	height:100%;
+    overflow: hidden;
+}
+
+#houses-list { /* 집 목록 */
+	position:absolute;
+	width:calc(100% + 30px);
+	height:100%;
+	overflow-y:scroll;
+	overflow-x:hidden;
+}
+
+#list {
+	width:100%;
+}
+
+#list li { /* 집 목록 아이템 */
+	position:relative;
+	height:50px;
+	width:100%;
+	list-style: none;
+	border-top: 1px solid gray;
+	border-right: 1px solid gray;
+	border-left: 1px solid gray;
+}
+
+#list li a { /* 집 목록 아이템 링크 */
+	height:50px;
+	text-decoration: none;
+	display: block;
+	width: 100%;
+	background-color:#eee;
+	position:relative;
+	color:#05a;
+}
+
+.list-checkbox-gray { /* 이전 방문에 못만남 선택된 집에 표시할 회색 X 박스 */
+    opacity:0.2;
+    display:none;
+	position: relative;  
+	font-size: 27px;
+
+	left:calc(100% - 110px);/*225px;*/
+	top:-8px;
+}
+
+.list-checkbox-gray:before {
+    content: "\2718";  /* 엑스모양 */
+	text-shadow: 1px 1px 1px rgba(0, 0, 0, .2);  
+	font-size: 27px; 
+	font-weight:800; 
+	color: #fff;  
+	background:gray;
+	text-align: center;  
+	line-height: 30px;  
+	
+	width: 30px;  
+	height: 30px;  
+
+	margin-right: 10px;  
+	position: absolute;
+	left: 0;  
+	bottom: 1px;
+	border-radius: 3px; 
+	box-shadow: inset 0px 1px 1px 0px rgba(0, 0, 0, .3), 0px 1px 0px 0px rgba(255, 255, 255, .8);  
+	
+ 
+}
+
+.list-checkbox { /* 목록에 체크박스 위치 결정 */
+	display:block;
+	cursor: pointer;  
+	position: relative;  
+	font-size: 27px;
+
+	left:calc(100% - 75px);/*225px;*/
+	top:-8px;
+}
+
+.list-check-layer { /* 목록마다 체크 박스 클릭시 생성되는 버튼 레이어 */
+	position:absolute;
+	left:0px;
+	top:0px;
+	width:100%;
+	height:50px;
+	display: none;
+	background: none rgba(0, 0, 0, 0.8);
+}
+
+.button-null {
+	cursor: pointer;  
+	position:absolute;
+	right: 75px;
+    top:40px;	
+}
+
+.button-checked {
+	cursor: pointer;  
+	position:absolute;
+	right: 255px;
+    top:40px;	
+}
+
+.button-indeterminate {
+	cursor: pointer;  
+	position:absolute;
+	right: 165px;
+    top:40px;
+}
+
+.house-num {
+	display:none;
+	font-size:24px;
+	position:absolute;
+	padding-left:20px;
+	height:40px;
+	width:50px;
+	line-height: 40px;
+	vertical-align: middle;
+}
+
+.house-name {
+	/*text-align:center;*/
+	position:absolute;
+	left:0px;
+	top:25px;
+	height:25px;
+	width:calc(100% - 95px);
+	line-height: 25px;
+	vertical-align: middle;
+	padding-left:15px;
+	overflow:hidden;
+	text-overflow:ellipsis;
+	white-space:nowrap;
+}
+
+.house-addr {
+	/*text-align:center;*/
+	position:absolute;
+	left:0px;
+	height:25px;
+	width:calc(100% - 95px);
+	line-height: 25px;
+	vertical-align: middle;
+	padding-left:15px;
+	overflow:hidden;
+	text-overflow:ellipsis;
+	white-space:nowrap;
+}
+
+.iw_inner { /* 인포 윈도우 */
+	padding: 5px;
+    white-space: nowrap;
+}
+
+.css-bar { /* 세줄 아이콘의 줄*/
+	position: relative;
+	margin: 4px 0px 5px 0;
+	background: #eee;
+	width: 25px;
+	height: 4px;
+	border-radius: 3px;
+}
+
+.css-dot { /* 세줄 아이콘의 줄*/
+	position: relative;
+	margin: 4px 0px 4px 8px;
+	background: #eee;
+	width: 5px;
+	height: 5px;
+	border-radius: 3px;
+}
+
+.layer {
+	z-index:1001;
+	position:fixed;
+	top:100%;
+	width:100%;
+	height:100%;
+	background: none rgba(0, 0, 0, 0.7);
+}
+
+.window {
+	margin: 0;
+    position: absolute;
+    top: 50%;
+	left:50%;
+    transform: translate(-50%,-50%);
+	color:white;
+}
+
+#house-select {
+	width:70%;
+}
+
+#menu-layer {
+	z-index:1000000;
+	position:absolute;
+	left:0px;
+	width:100%;
+	height:100%;
+	display: none;
+	background: none rgba(0, 0, 0, 0.7);
+}
+
+#menu {
+	margin: 0;
+	position: absolute;
+	top: 40px;
+	right: 5px;
+	padding: 5px;
+	border: 1px solid gray;
+	background-color: white;
+}
+
+.menu-item td{
+	padding: 3px;
+}
+
+select, input, button  {
+	font-size:19px;
+	font-family: 'Nanum Gothic', sans-serif;
+}
