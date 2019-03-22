@@ -59,7 +59,7 @@ if ($loginChecked) { // 자동 로그인 체크 성공
     switch ($_SERVER['REQUEST_URI']) 
     {
         case '/': // login 실패 했으므로 login 페이지로
-            readfile('./views/login.php');
+            include('./views/login.php');
             break;
         case '/test/': // test
             include('./test/test.php');
