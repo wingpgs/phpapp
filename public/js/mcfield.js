@@ -1,5 +1,7 @@
 $( function () { // 최초 실행 함수  모두 로딩되면 바로 실행됨.
 
+    console.log(location.hostname);
+
     DAUM_MAP = initDaumMap(); // 다음맵 시작
     
     var zoomStart = 10;

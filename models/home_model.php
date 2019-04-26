@@ -1,7 +1,7 @@
 <?php
 if(!defined('URI')){include($_SERVER['DOCUMENT_ROOT'].'/views/404.php');exit;}
 
-class Home
+class Home_model
 {
     public function __construct() 
     {

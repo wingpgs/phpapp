@@ -1,6 +1,8 @@
 <?php
 if(!defined('URI')){include($_SERVER['DOCUMENT_ROOT'].'/views/404.php');exit;}
 
+// 여기 작업중 // 여기여기여기여기여기여기여기
+
 /*
  *  model 로드
  */

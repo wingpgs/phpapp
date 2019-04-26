@@ -1,7 +1,7 @@
 <?php
 if(!defined('URI')){include($_SERVER['DOCUMENT_ROOT'].'/views/404.php');exit;}
 
-class Members 
+class Members_model
 {
     public function __construct() 
     {

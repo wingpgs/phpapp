@@ -1,7 +1,7 @@
 <?php
 if(!defined('URI')){include($_SERVER['DOCUMENT_ROOT'].'/views/404.php');exit;}
 
-class Admin
+class Admin_model
 {
     public function __construct() 
     {

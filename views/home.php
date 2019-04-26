@@ -21,8 +21,7 @@ include('./views/navbar.php');
         <div class='container py-3'><div class='row'>
 
 <?php
-$outputHtml = array_reduce(
-    $data['maps'],
+(is_array($class->data['maps']) ? $outputHtml = array_reduce($class->data['maps'],
     function ($carry, $item) use ($male)
     {
         $carry .= "
@@ -40,7 +39,7 @@ $outputHtml = array_reduce(
             </div>";
         return $carry;
     }
-);
+) : $outputHtml = '');
 echo $outputHtml;
 //print_r($data['maps']);
 ?>

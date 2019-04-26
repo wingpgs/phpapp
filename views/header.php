@@ -11,7 +11,7 @@ if(!defined('URI')){include($_SERVER['DOCUMENT_ROOT'].'/views/404.php');exit;}
         <meta name="description" content="">
         <meta name="author" content="">
         
-        <title><?php echo $data['title']?></title>
+        <title><?php echo $class->data['title']?></title>
         <!-- 안드로이드 홈화면추가시 상단 주소창 제거 -->
     	<meta name="mobile-web-app-capable" content="yes">
 	    <!-- ios홈화면추가시 상단 주소창 제거 -->

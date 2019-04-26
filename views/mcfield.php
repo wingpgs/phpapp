@@ -30,7 +30,7 @@ include('./views/navbar.php');
 include('./views/footer.php');
 ?>
         <!-- Placed at the end of the document so the pages load faster -->
-        <!-- naver.map api -->
+        <!-- daum.map api -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=bf8dd2e625e382146562b0d80d14059e&libraries=drawing"></script>
         <script src="/public/js/mcfield.js?var=2" type="text/javascript"></script>
