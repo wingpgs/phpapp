@@ -4,7 +4,7 @@ if(!defined('URI')){include($_SERVER['DOCUMENT_ROOT'].'/views/404.php');exit;}
 include('./views/header.php');
 ?>
         <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic" rel="stylesheet">
-        <link href="/public/css/mcfield.css?ver=1" rel="stylesheet">
+        <link href="/public/css/fieldborder.css?ver=1" rel="stylesheet">
     </head>
     <body class="h-100">
         <div class="h-100"> <!-- main screen -->
@@ -33,6 +33,6 @@ include('./views/footer.php');
         <!-- daum.map api -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=bf8dd2e625e382146562b0d80d14059e&libraries=drawing"></script>
-        <script src="/public/js/mcfield.js?var=2" type="text/javascript"></script>
+        <script src="/public/js/fieldborder.js?var=7" type="text/javascript"></script>
     </body>
 </html>

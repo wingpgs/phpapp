@@ -26,7 +26,7 @@ $active = array_map( function ($value)
                         <a class="nav-link<?php echo $active[0]?>" href="/home/">홈</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link<?php echo $active[1]?>" href="/mcfield/">회중구역</a>
+                        <a class="nav-link<?php echo $active[1]?>" href="/fieldborder/">회중구역</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link<?php echo $active[2]?>" href="/members/">회중성원</a>

@@ -87,17 +87,17 @@ if ($loginChecked) { // 자동 로그인 체크 성공
             include('./models/logincheck.php');
             break;
         default:
-            // 요청 uri와 라우팅 테이블 비교, 일치하는 값이 있으면 가져옴
-            $route = array_filter($routingTable, function ($key) {
-                return $key == URI[0];
-            }, ARRAY_FILTER_USE_KEY);
+            // // 요청 uri와 라우팅 테이블 비교, 일치하는 값이 있으면 가져옴
+            // $route = array_filter($routingTable, function ($key) {
+            //     return $key == URI[0];
+            // }, ARRAY_FILTER_USE_KEY);
 
-            // 받아온 위치가 있으면 로그인 페이지로 보내고 없으면 404 메세지 출력
-            if ($route) {  
-                header('location: /', true, 301);
-            } else {
-                include('./views/404.php');
-            }
+            // // 받아온 위치가 있으면 로그인 페이지로 보내고 없으면 404 메세지 출력
+            // if ($route) {  
+            //     header('location: /', true, 301);
+            // } else {
+            //     include('./views/404.php');
+            // }
     }
 }
 ?>

@@ -7,6 +7,10 @@ $( function () { // 최초 실행 함수  모두 로딩되면 바로 실행됨.
     var zoomStart = 10;
     var polygons = [];
 
+    daum.maps.event.addListener(DAUM_MAP, 'click', function(mouseEvent) {
+        console.log(mouseEvent.latLng);
+    });
+
     // 이전 줌 레벨 저장
     daum.maps.event.addListener(DAUM_MAP, 'zoom_start', function() {
         zoomStart = DAUM_MAP.getLevel();
@@ -19,9 +23,9 @@ $( function () { // 최초 실행 함수  모두 로딩되면 바로 실행됨.
             polygons.map(function (polygon) {
                 polygon.setMap(null);
             });
-            $.getJSON( "/public/json/mcfieldli.json", function ( geojson ) {
+            $.getJSON( "/public/json/fieldborder_li.json", function ( geojson ) {
                 // console.log(geojson);var polygons = [];
-                var features = geojson.features;
+                var geometries = geojson.geometries;
                 var options = {
                     map: DAUM_MAP,
                     strokeWeight: 2,
@@ -31,16 +35,15 @@ $( function () { // 최초 실행 함수  모두 로딩되면 바로 실행됨.
                     fillColor: '#00EEEE',
                     fillOpacity: 0
                 };
-                polygons = emdLoop( options, features, 0, features.length - 1 );
-                console.log( geojson );
+                polygons = emdLoop( options, geometries, 0, geometries.length - 1 );
             } );
         } else if (zoomStart == 7 && DAUM_MAP.getLevel() == 8) {
             polygons.map(function (polygon) {
                 polygon.setMap(null);
             });
-            $.getJSON( "/public/json/mcfieldemd.json", function ( geojson ) {
+            $.getJSON( "/public/json/fieldborder_emd.json", function ( geojson ) {
                 // console.log(geojson);
-                var features = geojson.features;
+                var geometries = geojson.geometries;
                 var options = {
                     map: DAUM_MAP,
                     strokeWeight: 2,
@@ -50,16 +53,15 @@ $( function () { // 최초 실행 함수  모두 로딩되면 바로 실행됨.
                     fillColor: '#00EEEE',
                     fillOpacity: 0
                 };
-                polygons = emdLoop( options, features, 0, features.length - 1 );
-                console.log( geojson );
+                polygons = emdLoop( options, geometries, 0, geometries.length - 1 );
             } );
         }
     });
 
     // 구역 경계 읍면 좌표 가져오기
-    $.getJSON( "/public/json/mcfieldemd.json", function ( geojson ) {
+    $.getJSON( "/public/json/fieldborder_emd.json", function ( geojson ) {
         // console.log(geojson);
-        var features = geojson.features;
+        var geometries = geojson.geometries;
         var options = {
             map: DAUM_MAP,
             strokeWeight: 2,
@@ -69,15 +71,13 @@ $( function () { // 최초 실행 함수  모두 로딩되면 바로 실행됨.
             fillColor: '#00EEEE',
             fillOpacity: 0
         };
-        polygons = emdLoop( options, features, 0, features.length - 1 );
-        console.log( geojson );
+        polygons = emdLoop( options, geometries, 0, geometries.length - 1 );
     } );
 } );
 
 // 다음 LatLng 만드는 함수 배열로 있는 위치 정보를 다음LatLng 객체로 모두 변환
 function makeDaumCoordinate( coordinates, start, end ) {
     if ( start == end ) {
-        // 여기 해야 됩니다. 여기 작업중
         var results = new Array(); 
         results.push( new daum.maps.LatLng( coordinates[end][1], coordinates[end][0]) );
         return results;
@@ -91,14 +91,14 @@ function makeDaumCoordinate( coordinates, start, end ) {
 // 읍면동 루프 함수(폴리곤 그리기 작업 명령)
 function emdLoop( options, data, start, end ) {
     if ( start == end ) {
-        var coordinates = data[end].geometry.coordinates[0];
+        var coordinates = data[end].coordinates[0];
         var path = makeDaumCoordinate( coordinates, 0, coordinates.length - 1 );
         var results = new Array();
         options.path = path;
         results.push( drawPolygon( options ) );
         return results;
     } else {
-        var coordinates = data[end].geometry.coordinates[0];
+        var coordinates = data[end].coordinates[0];
         var path = makeDaumCoordinate( coordinates, 0, coordinates.length - 1 );
         var results = emdLoop( options, data, start, end - 1 );
         options.path = path;
@@ -114,8 +114,8 @@ function emdLoop( options, data, start, end ) {
         var container = document.getElementById('map');
         var options = {
             //center: new daum.maps.LatLng(36.8181456, 127.2413294),
-            center: new daum.maps.LatLng(36.7501456, 127.2413294),
-            level: 10
+            center: new daum.maps.LatLng(36.71659985578935, 127.11460590440998),
+            level: 9
         };
             
         var map = new daum.maps.Map(container, options);

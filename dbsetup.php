@@ -70,8 +70,8 @@ $query = "select count(*) as cnt from users";
 $sth = $dbh->query($query);
 $count = $sth->fetch(PDO::FETCH_BOTH);
 if (!$count[0]) {
-    $query = "insert into users (user_name, user_password, user_phone_number)"
-        ." values ('김형제',password('0000'),'010-0000-0000')";
+    $query = "insert into users (user_name, user_password, user_phone_number, user_male)"
+        ." values ('김형제',password('0000'),'010-0000-0000', 1)";
     $sth = $dbh->exec($query);
 }
 echo '데이터 베이스 설정을 마쳤습니다.';
