@@ -21,8 +21,8 @@ $sth = $dbh->exec($query);
 
 $query = "CREATE TABLE IF NOT EXISTS `token` (
         `user_id` int(11) NOT NULL,
-        `identifier` varchar(100) NOT NULL,
-        `token` varchar(100) NOT NULL,
+        `identifier` varchar(256) NOT NULL,
+        `token` varchar(256) NOT NULL,
         `user_agent` varchar(256) DEFAULT NULL,
         `token_id` bigint(20) NOT NULL AUTO_INCREMENT,
         PRIMARY KEY (`token_id`),
