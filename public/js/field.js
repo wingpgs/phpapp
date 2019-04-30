@@ -649,7 +649,7 @@ function visitRecord(house,checkstate) {
     $.ajax({
         method: 'POST',
         dataType: 'text',
-        url: '/update/',
+        url: '/field/update/',
         data: data
     }).done(function (data) {
         console.log(data);
@@ -716,7 +716,7 @@ $('#input-submit').click(function() {  // 추가 입력
         $.ajax({
             method: 'POST',
             dataType: 'text',
-            url: '/insert/',
+            url: '/field/insert/',
             data: data
         }).done(function (data) {
             if (data != 'false') { 
@@ -772,7 +772,7 @@ $('#update-submit').click(function() { // 수정 입력
         $.ajax({
             method: 'POST',
             dataType: 'text',
-            url: '/update/',
+            url: '/field/update/',
             data: data
         }).done(function (data) {
             if (data) {
@@ -802,7 +802,7 @@ $('#delete-submit').click(function() { // 삭제
         $.ajax({
             method: 'POST',
             dataType: 'text',
-            url: '/delete/',
+            url: '/field/delete/',
             data: data
         } ).done( function ( data ) {
             if ( data ) {
@@ -824,24 +824,24 @@ $(document).ready( function() {  // 여기가 시작.
 
     initDaumMap();
     
-    var data = {}; data.map_id = uriArray[2];
+    var data = {}; data.map_id = uriArray[3];
     $.ajax({
         method: 'POST',
-        dataType: 'JSON',
-        url: '/gethouses/',
+        dataType: 'text',
+        url: '/field/gethouses/',
         data: data
     }).done(function(data) {
         console.log(data);
-        if (data != 'false') {
+        if (data != false) {
             arrangeBuildingData(data);
         } else {
             dbbuildings = [];
         }
-        var simple_card = {}; simple_card.id = uriArray[2]; simple_card.name = uriArray[3];
+        var simple_card = {}; simple_card.id = uriArray[3]; simple_card.name = uriArray[4];
         myCard = new card(simple_card);  // 카드 객체 생성 (카드 안에 다 있음. 건물, 리스트-아이템, 마커, 맵, 등등 필요한 변수들도 몽땅 들어 있음. 하나만 확인하면 됨 ㅋㅋ
         //checkNullHouseCount();  // null_house_count 확인하고 0이면 indeterminated 상태 null로 변경
         //myCard.setMarkerIcon();
-        $('#navbar-title').text(uriArray[3]); // $('#card-selection').text(card_simple[count].name); // 헤더 구역카드 이름으로 변경
+        $('#navbar-title').text(uriArray[4]); // $('#card-selection').text(card_simple[count].name); // 헤더 구역카드 이름으로 변경
         localStorageData(); // 로컬스토리지에 데이터 저장
         console.log(localStorage);
     });
@@ -1084,7 +1084,7 @@ function compareTime() {  // 로컬 스토리지에서 시간 불러와서 지�
     function initDaumMap () {   // 다음 지도 시작
         var container = document.getElementById('map');
         var options = {
-        center: new daum.maps.LatLng(36.8181456, 127.2413294),
+        center: new daum.maps.LatLng(36.71659985578935, 127.11460590440998),
         level: 8
         };
             

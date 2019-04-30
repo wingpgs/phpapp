@@ -19,7 +19,7 @@ $( function () { // 최초 실행 함수  모두 로딩되면 바로 실행됨.
 
     // 줌 레벨이 7-8 사이에 변하면 지도 구역 표시 바꾸기
     daum.maps.event.addListener(DAUM_MAP, 'zoom_changed', function() {        
-        if (zoomStart == 8 && DAUM_MAP.getLevel() == 7) {
+        if (zoomStart >= 8 && DAUM_MAP.getLevel() <= 7) {
             polygons.map(function (polygon) {
                 polygon.setMap(null);
             });
@@ -37,7 +37,7 @@ $( function () { // 최초 실행 함수  모두 로딩되면 바로 실행됨.
                 };
                 polygons = emdLoop( options, geometries, 0, geometries.length - 1 );
             } );
-        } else if (zoomStart == 7 && DAUM_MAP.getLevel() == 8) {
+        } else if (zoomStart <= 7 && DAUM_MAP.getLevel() >= 8) {
             polygons.map(function (polygon) {
                 polygon.setMap(null);
             });

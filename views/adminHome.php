@@ -10,8 +10,8 @@ include('./views/header.php');  // html 문서 시작부분 추가
 include('./views/navbar.php');
 ?>
         <div class='py-2'><div class="text-center">
-            <a class="btn btn-primary" href="/admin/addMember/" role="button">구성원추가</a>
-            <a class="btn btn-primary" href="/admin/updateMember/" role="button">구성원수정</a>
+            <a class="btn btn-primary" href="/admin/addmember/" role="button">구성원추가</a>
+            <a class="btn btn-primary" href="/admin/updatemember/" role="button">구성원수정</a>
             <a class="btn btn-primary" href="/테스트/" role="button">테스트코드</a>
             <a class="btn btn-primary" href="/logout/" role="button">Logout</a>
         </div></div>

@@ -54,9 +54,9 @@ if ($loginChecked) { // 자동 로그인 체크 성공
                 $uri1 = URI[1];
                 if (isset(URI[2])) {
                     $uri2 = URI[2];
-                    $uri1($uri2);
+                    $class->$uri1($uri2);
                 } else {
-                    $uri1();
+                    $class->$uri1();
                 }
             }
         

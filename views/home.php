@@ -31,7 +31,7 @@ include('./views/navbar.php');
                         {$item['map_name']}
                     </h5>
                     <div class='card-body text-right'>
-                        <a href='/field/{$item['map_id']}/{$item['map_name']}/' class='card-link'>
+                        <a href='/field/home/{$item['map_id']}/{$item['map_name']}/' class='card-link'>
                             이동
                         </a>
                     </div>

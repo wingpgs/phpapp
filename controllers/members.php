@@ -10,9 +10,9 @@ class Members
 
     public function __construct()
     {
-        $Model = new Members_model();
+        $this->Model = new Members_model();
 
-        $results = $Model->getUsers();
+        $results = $this->Model->getUsers();
 
         // view 에서 사용할 data 준비
         $this->data['title'] = '회중성원';

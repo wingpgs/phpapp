@@ -98,7 +98,7 @@ if(!defined('URI')){include($_SERVER['DOCUMENT_ROOT'].'/views/404.php');exit;}
     <!-- naver.map api -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=bf8dd2e625e382146562b0d80d14059e&libraries=services,clusterer,drawing"></script>
-    <script src="/public/js/field.js?var=1" type="text/javascript"></script>
+    <script src="/public/js/field.js?var=3" type="text/javascript"></script>
   </body>
 </html>
 

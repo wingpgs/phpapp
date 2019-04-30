@@ -9,8 +9,8 @@ class Logout
 
     public function __construct()
     {
-        $Model = new Logout_model();
-        $Model->logout();
+        $this->Model = new Logout_model();
+        $this->Model->logout();
 
         echo '<meta http-equiv="refresh" content="0;url=/" />';
     }

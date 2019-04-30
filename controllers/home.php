@@ -9,11 +9,11 @@ class Home
 
     public function __construct()
     {
-        $Model = new Home_model();
+        $this->Model = new Home_model();
 
         // view 에서 사용할 data 준비
         $this->data['title'] = '야외봉사';
-        $this->data['maps'] = $Model->getMaps();
+        $this->data['maps'] = $this->Model->getMaps();
 
         // view 경로 지정
         $this->data['view'] = './views/home.php';

@@ -8,7 +8,7 @@ class Admin
 
     public function __construct()
     {
-        $Model = new Admin_model();
+        $this->Model = new Admin_model();
 
         // view 에서 사용할 data 준비
         $this->data['title'] = '관리';
@@ -38,6 +38,6 @@ class Admin
     function addMemberSubmit ()
     {
         //global $Admin;
-        $result = $Model->addUser($_POST);
+        $result = $this->Model->addUser($_POST);
     }
 }

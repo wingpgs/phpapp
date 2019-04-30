@@ -52,7 +52,8 @@ $query = "CREATE TABLE IF NOT EXISTS `buildings` (
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8";
 $sth = $dbh->exec($query);
 
-$query = "CREATE TABLE IF NOT EXISTS `houses` (
+
+$query = "CREATE TABLE `houses` (
         `house_id` int(11) NOT NULL AUTO_INCREMENT,
         `house_name` varchar(255) DEFAULT NULL,
         `house_status` tinyint(4) DEFAULT '0',
@@ -60,9 +61,12 @@ $query = "CREATE TABLE IF NOT EXISTS `houses` (
         `house_date2` date DEFAULT NULL,
         `house_date3` date DEFAULT NULL,
         `building_id` int(11) NOT NULL,
+        `map_id` int(11) NOT NULL,
         PRIMARY KEY (`house_id`),
         KEY `building_id` (`building_id`),
-        CONSTRAINT `houses_ibfk_1` FOREIGN KEY (`building_id`) REFERENCES `buildings` (`building_id`) ON DELETE CASCADE ON UPDATE CASCADE
+        KEY `map_id` (`map_id`),
+        CONSTRAINT `houses_ibfk_1` FOREIGN KEY (`building_id`) REFERENCES `buildings` (`building_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+        CONSTRAINT `houses_ibfk_2` FOREIGN KEY (`map_id`) REFERENCES `maps` (`map_id`) ON DELETE CASCADE ON UPDATE CASCADE
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8";
 $sth = $dbh->exec($query);
 
