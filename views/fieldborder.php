@@ -33,6 +33,6 @@ include('./views/footer.php');
         <!-- daum.map api -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=bf8dd2e625e382146562b0d80d14059e&libraries=drawing"></script>
-        <script src="/public/js/fieldborder.js?var=8" type="text/javascript"></script>
+        <script src="/public/js/fieldborder.js?var=9" type="text/javascript"></script>
     </body>
 </html>

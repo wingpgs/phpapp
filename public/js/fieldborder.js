@@ -125,7 +125,7 @@ function emdLoop( options, data, start, end ) {
         return map;
     }
 
-    function setMapType(maptype) {alert('Map is going to zoom!') 
+    function setMapType(maptype) { 
         var roadmapControl = document.getElementById('btnRoadmap');
         var skyviewControl = document.getElementById('btnSkyview'); 
         if (maptype === 'roadmap') {

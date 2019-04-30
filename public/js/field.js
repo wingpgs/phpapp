@@ -603,26 +603,6 @@ $('#menu').click( function () {
 // 서버와의 통신
 //
 
-//function getMoreNullHouse() {
-//	
-//    var sql = '=query({houses!A2:J, arrayformula(row(houses!A2:J))}, "select Col11 where Col1 = ' 
-//      + myCard.id + ' and Col5 = 2 and Col8 <> ' + "'" + getDate() + "'" + ' order by Col1 asc")';
-//    var data = []; data[0] = []; data[0][0] = 5; data[0][1] = 0;
-//    google.script.run.withSuccessHandler(function (h) {
-//      var today = getDate();
-//      for ( var i = 0; i < myCard.buildings.length; i++ ) {
-//        for ( var j = 0; j < myCard.buildings[i].houses.length; j++ ) {
-//          if ( myCard.buildings[i].houses[j].checked == 2 & myCard.buildings[i].houses[j].datec != today ) {
-//            myCard.buildings[i].houses[j].checked = 0;
-//            myCard.buildings[i].houses[j].checkbox.attr('class','list-checkbox list-checkbox-null');
-//          }
-//        }
-//      }
-//      myCard.setMarkerIcon();
-//    }).update(sql, data);
-//    
-//}
-
 function visitRecord(house,checkstate) {
     var today_date = getDate();
     var data = {}; data.house_status = checkstate; data.house_id = house.id;
@@ -648,7 +628,7 @@ function visitRecord(house,checkstate) {
 
     $.ajax({
         method: 'POST',
-        dataType: 'text',
+        dataType: 'json',
         url: '/field/update/',
         data: data
     }).done(function (data) {
@@ -715,7 +695,7 @@ $('#input-submit').click(function() {  // 추가 입력
     setTimeout(function() {
         $.ajax({
             method: 'POST',
-            dataType: 'text',
+            dataType: 'json',
             url: '/field/insert/',
             data: data
         }).done(function (data) {
@@ -771,7 +751,7 @@ $('#update-submit').click(function() { // 수정 입력
     setTimeout(function() {
         $.ajax({
             method: 'POST',
-            dataType: 'text',
+            dataType: 'json',
             url: '/field/update/',
             data: data
         }).done(function (data) {
@@ -801,7 +781,7 @@ $('#delete-submit').click(function() { // 삭제
     setTimeout( function () {
         $.ajax({
             method: 'POST',
-            dataType: 'text',
+            dataType: 'json',
             url: '/field/delete/',
             data: data
         } ).done( function ( data ) {
@@ -827,7 +807,7 @@ $(document).ready( function() {  // 여기가 시작.
     var data = {}; data.map_id = uriArray[3];
     $.ajax({
         method: 'POST',
-        dataType: 'text',
+        dataType: 'json',
         url: '/field/gethouses/',
         data: data
     }).done(function(data) {
@@ -846,96 +826,7 @@ $(document).ready( function() {  // 여기가 시작.
         console.log(localStorage);
     });
     // 시작
-    
-
-    // if ( compareTime() ) {  // 지정된 시간 안에 접속한 기록이 있으면 이전에 불러왔던 맵 다시 불러오기
-    //     // var data = {}; data.map_id = localStorage.card_id;
-    //     var data = {}; data.map_id = uriArray[2];
-    //     $.ajax({
-    //         method: 'POST',
-    //         dataType: 'JSON',
-    //         url: '/gethouses/',
-    //         data: data
-    //     }).done(function(data) {
-    //         console.log(data);
-    //         if (data != 'false') {
-    //             arrangeBuildingData(data);
-    //         } else {
-    //             dbbuildings = [];
-    //         }
-    //         var simple_card = {}; simple_card.id = localStorage.card_id; simple_card.name = localStorage.card_name;
-    //         myCard = new card(simple_card);  // 카드 객체 생성 (카드 안에 다 있음. 건물, 리스트-아이템, 마커, 맵, 등등 필요한 변수들도 몽땅 들어 있음. 하나만 확인하면 됨 ㅋㅋ
-    //         //checkNullHouseCount();  // null_house_count 확인하고 0이면 indeterminated 상태 null로 변경
-    //         //myCard.setMarkerIcon();
-    //         $('#card-selection').text(localStorage.card_name); // $('#card-selection').text(card_simple[count].name); // 헤더 구역카드 이름으로 변경
-    //         localStorageData(); // 로컬스토리지에 데이터 저장
-    //         console.log(localStorage);
-    //     });
-        
-    //     $.ajax({
-    //         dataType: 'JSON',
-    //         url: '/getmaps/'
-    //     }).done(function(data) {
-    //         if(data) {
-    //             for (var i = 0; i < data.length; i++) {
-    //                 card_simple[i] = new cardSimple(data[i],i);
-    //             }
-    //         } else {
-    //         }
-    //     });
-    // } else {
-    //     $.ajax({
-    //         dataType: 'JSON',
-    //         url: '/getmaps/'
-    //     }).done(function(data) {
-    //         if(data) {
-    //             for (var i = 0; i < data.length; i++) {
-    //                 card_simple[i] = new cardSimple(data[i],i);
-    //             }
-    //             $('#card-selection').append("여기를 누르세요...");
-    //         } else {
-    //             $('#navbar-title').empty().append("사용가능한 카드 없음");    
-    //         }
-    //     });
-    // }
-    // 시작
 });
-
-// $('#select-this').click(function() {   // 구역카드 선택 버튼 클릭
-//     closeSelectLayer(); // 선택 레이어 내리기
-    
-//     // 지도와 리스트 초기화 (다른 구역 선택할 때를 대비..)
-//     $( '#map' ).empty();
-//     $( "#list" ).empty();
-
-//     initDaumMap();
-
-//     var count = $('#card-select').val();
-//     var data = {}; data.map_id = card_simple[count].id;
-
-//     setTimeout(function() {
-//         $.ajax({
-//             method: 'POST',
-//             dataType: 'JSON',
-//             url: '/gethouses/',
-//             data: data
-//         }).done(function(data) {
-//             console.log(data);
-//             if (data != 'false') {
-//                 arrangeBuildingData(data);
-//             } else {
-//                 dbbuildings = [];
-//             }
-//             myCard = new card(card_simple[count]);  // 카드 객체 생성 (카드 안에 다 있음. 건물, 리스트-아이템, 마커, 맵, 등등 필요한 변수들도 몽땅 들어 있음. 하나만 확인하면 됨 ㅋㅋ
-//             //checkNullHouseCount();  // null_house_count 확인하고 0이면 indeterminated 상태 null로 변경
-//             //myCard.setMarkerIcon();
-//             $('#card-selection').text(card_simple[count].name); // $('#card-selection').text(card_simple[count].name); // 헤더 구역카드 이름으로 변경
-//             localStorageData(); // 로컬스토리지에 데이터 저장
-//             console.log(localStorage);
-//         });
-//     }, 1000);
-
-// });  // 구역카드 선택버튼 클릭
 
 //
 // 서버와의 통신
@@ -945,12 +836,6 @@ $(document).ready( function() {  // 여기가 시작.
 //
 // 기타 함수들 혹은 리스너
 //
-
-//function checkNullHouseCount () {
-//	if ( null_house_count === 0 ) {
-//		getMoreNullHouse();
-//	}
-//}
 
 function getDate() { // 오늘 날짜 가져오기
 	var date = new Date(); 

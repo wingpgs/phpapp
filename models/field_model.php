@@ -24,7 +24,7 @@ class Field_model
             $i = json_encode($results);
             return $i;
         } else {
-            return false;
+            return json_encode(false);
         }
     }
 
@@ -44,7 +44,7 @@ class Field_model
             if ( $state ) {
                 $house_id = $dbh->lastInsertId();
             } else {
-                return false;
+                return json_encode(false);
             }
         } else { // 기존 건물이 없을 때
             $query = 'insert into buildings (map_id,building_address,building_latitude,building_longitude) '
@@ -58,7 +58,7 @@ class Field_model
             if ( $state ) {
                 $building_id = $dbh->lastInsertId();
             } else {
-                return false;
+                return json_encode(false);
             }
             
             $query = 'insert into houses (map_id,building_id,house_name,house_status) '
@@ -72,7 +72,7 @@ class Field_model
             if ( $state ) {
                 $house_id = $dbh->lastInsertId();
             } else {
-                return false;
+                return json_encode(false);
             }
         }
         
@@ -89,7 +89,7 @@ class Field_model
             $i = json_encode($results);
             return $i;
         } else {
-            return false;
+            return json_encode(false);
         }
         
     }
@@ -132,9 +132,9 @@ class Field_model
         }
         $state = $sth->execute();
         if ( $state ) {
-            return true;
+            return json_encode(true);
         } else {
-            return false;
+            return json_encode(false);
         }
     }
 
@@ -145,16 +145,16 @@ class Field_model
         } elseif ( isset($_POST['building_id']) ) {
             $query = 'delete from buildings where building_id = '.$_POST['building_id'].';';
         } else {
-        echo false;
-        exit;
+            return json_encode(false);
+            exit;
         }
 
         $dbh = dbConnection();
         $state = $dbh->exec($query);
         if ( $state ) {
-            return true;
+            return json_encode(ture);
         } else {
-            return false;
+            return json_encode(false);
         }
     }
 }
