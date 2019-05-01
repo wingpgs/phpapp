@@ -22,9 +22,7 @@ if ($loginChecked) { // 자동 로그인 체크 성공
             $class = new $uri0();
             if (!isset(URI[1])) { // function 호출이 없을 때
                 // view 가져오기
-                if(array_key_exists('view',$class->data)) {
-                    include($class->data['view']);  // html 문서 본문부분 추가
-                }
+                $class->home();
             } else {
                 $uri1 = URI[1];
                 if (isset(URI[2])) {

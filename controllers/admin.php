@@ -12,15 +12,18 @@ class Admin
 
         // view 에서 사용할 data 준비
         $this->data['title'] = '관리';
+    }
 
-        // view 경로 지정
-        $this->data['view'] = './views/adminHome.php';
+    public function home()
+    {
+        // view 가져오기
+        include('./views/adminHome.php');
     }
 
     public function addMember ()
     {
         // data 준비
-        $data['title'] = '구성원추가';
+        $this->data['title'] = '구성원추가';
 
         // view 가져오기
         include('./views/adminAddMember.php');
@@ -29,7 +32,7 @@ class Admin
     public function updateMember ()
     {
         // data 준비
-        $data['title'] = '구성원수정';
+        $this->data['title'] = '구성원수정';
 
         // view 가져오기
         include('./views/adminUpdateMember.php');
@@ -37,7 +40,6 @@ class Admin
 
     public function addMemberSubmit ()
     {
-        //global $Admin;
         $result = $this->Model->addUser($_POST);
     }
 
