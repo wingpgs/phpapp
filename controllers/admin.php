@@ -23,7 +23,7 @@ class Admin
         $data['title'] = '구성원추가';
 
         // view 가져오기
-        include('./views/addMember.php');
+        include('./views/adminAddMember.php');
     }
 
     public function updateMember ()
@@ -32,7 +32,7 @@ class Admin
         $data['title'] = '구성원수정';
 
         // view 가져오기
-        include('./views/updateMember.php');
+        include('./views/adminUpdateMember.php');
     }
 
     public function addMemberSubmit ()
