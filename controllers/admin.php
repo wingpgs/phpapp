@@ -17,7 +17,7 @@ class Admin
         $this->data['view'] = './views/adminHome.php';
     }
 
-    function addMember ()
+    public function addMember ()
     {
         // data 준비
         $data['title'] = '구성원추가';
@@ -26,7 +26,7 @@ class Admin
         include('./views/addMember.php');
     }
 
-    function updateMember ()
+    public function updateMember ()
     {
         // data 준비
         $data['title'] = '구성원수정';
@@ -35,9 +35,16 @@ class Admin
         include('./views/updateMember.php');
     }
 
-    function addMemberSubmit ()
+    public function addMemberSubmit ()
     {
         //global $Admin;
         $result = $this->Model->addUser($_POST);
+    }
+
+    public function logout ()
+    {
+        $this->Model->logout();
+
+        echo '<meta http-equiv="refresh" content="0;url=/" />';
     }
 }

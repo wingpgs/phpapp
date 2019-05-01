@@ -13,7 +13,7 @@ include('./views/navbar.php');
             <a class="btn btn-primary" href="/admin/addmember/" role="button">구성원추가</a>
             <a class="btn btn-primary" href="/admin/updatemember/" role="button">구성원수정</a>
             <a class="btn btn-primary" href="/테스트/" role="button">테스트코드</a>
-            <a class="btn btn-primary" href="/logout/" role="button">Logout</a>
+            <a class="btn btn-primary" href="/admin/logout/" role="button">Logout</a>
         </div></div>
 <?php
 include('./views/footer.php');  // html 문서 끝부분 추가

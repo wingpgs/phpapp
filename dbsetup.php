@@ -1,7 +1,6 @@
 <?php
 // 데이터 베이스를 완전히 초기화 합니다. 기존의 데이터가 모두 삭제될 수 있습니다.
 
-
 require_once('./config.php');
 
 $dbh = new PDO('mysql:host=localhost;dbname='.DATABASENAME, DATABASEUSERNAME, DATABASEUSERPASSWORD);
@@ -52,8 +51,7 @@ $query = "CREATE TABLE IF NOT EXISTS `buildings` (
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8";
 $sth = $dbh->exec($query);
 
-
-$query = "CREATE TABLE `houses` (
+$query = "CREATE TABLE IF NOT EXISTS `houses` (
         `house_id` int(11) NOT NULL AUTO_INCREMENT,
         `house_name` varchar(255) DEFAULT NULL,
         `house_status` tinyint(4) DEFAULT '0',
@@ -78,5 +76,15 @@ if (!$count[0]) {
         ." values ('김형제',password('0000'),'010-0000-0000', 1)";
     $sth = $dbh->exec($query);
 }
+
+$query = "select count(*) as cnt from maps";
+$sth = $dbh->query($query);
+$count = $sth->fetch(PDO::FETCH_BOTH);
+if (!$count[0]) {
+    $query = "insert into maps (map_number, map_name, map_use)"
+        ." values (0, '아무리', 1)";
+    $sth = $dbh->exec($query);
+}
+
 echo '데이터 베이스 설정을 마쳤습니다.';
 ?>

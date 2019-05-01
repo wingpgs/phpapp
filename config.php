@@ -29,4 +29,5 @@ spl_autoload_register(function($class_name) {
             return;
         }
     }
+    include('./views/404.php');exit;
 });
