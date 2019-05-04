@@ -17,6 +17,9 @@ if ($loginChecked) { // 자동 로그인 체크 성공
     {
         case '/':
             header('location: /Home/', true, 301); break;
+        case '/index.php':
+            header('location: /', true, 301);
+            break;
         case '/try/': // test
             include('./test/test.php');
             break;
