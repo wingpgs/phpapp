@@ -15,8 +15,11 @@ $loginChecked = autoLoginCheck();
 if ($loginChecked) { // 자동 로그인 체크 성공
     switch ($_SERVER['REQUEST_URI'])
     {
-        case '/': 
+        case '/':
             header('location: /Home/', true, 301); break;
+        case '/try/': // test
+            include('./test/test.php');
+            break;
         default :
             $uri0 = URI[0];
             $class = new $uri0();
@@ -39,7 +42,7 @@ if ($loginChecked) { // 자동 로그인 체크 성공
         case '/': // login 실패 했으므로 login 페이지로
             include('./views/login.php');
             break;
-        case '/test/': // test
+        case '/try/': // test
             include('./test/test.php');
             break;
         case '/logincheck/': // logincheck

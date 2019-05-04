@@ -15,7 +15,7 @@ include('./views/navbar.php');
         <!-- 여기부터는 내용입니다.-->
         <div class='container py-3'>
             <p class='h6 mb-3'>아래 <span style='color:#dc3545'>빨간색</span> 칸들을 모두 입력하고 확인을 누르세요...</p>
-            <form class='was-validated' action='/admin/addMemberSubmit/' method='post'>
+            <form class='was-validated' action='/admin/addMemberSubmit/' method='post' autocomplete='off'>
                 <div class='form-group'>
                     <input id='user_name' class='form-control' name='name' type='text' placeholder='이름' required>
                     <div class='valid-feedback'>이름</div>
@@ -29,45 +29,45 @@ include('./views/navbar.php');
                 </div>
                 
                 <div class='form-group'>
-                    <input id='user_phone_number' class='form-control' name='phone' type='text' placeholder='휴대전화번호' required>
+                    <input id='user_phone_number' class='form-control' name='phone_number' type='text' placeholder='휴대전화번호' required>
                     <div class='valid-feedback'>휴대전화번호</div>
                     <div class='invalid-feedback'>휴대전화번호을 입력하세요...</div>
                 </div>
                 
                 <div class="custom-control custom-radio">
-                    <input type="radio" class="custom-control-input" id="brother" name="gender" value='brother' required>
+                    <input type="radio" class="custom-control-input" id="brother" name="male" value='1' required>
                     <label class="custom-control-label" for="brother">형제</label>
                 </div>
                 <div class="custom-control custom-radio mb-3">
-                    <input type="radio" class="custom-control-input" id="sister" name="gender" value='sister' required>
+                    <input type="radio" class="custom-control-input" id="sister" name="male" value='0' required>
                     <label class="custom-control-label" for="sister">자매</label>
                     <div class="invalid-feedback">형제/자매 선택하세요...</div>
                 </div>
                 
                 <div class="custom-control custom-radio">
-                    <input type="radio" class="custom-control-input" id="position1" name="position" value='elder' disabled>
+                    <input type="radio" class="custom-control-input" id="position1" name="position" value='1' disabled>
                     <label class="custom-control-label" for="position1">장로</label>
                 </div>
                 <div class="custom-control custom-radio mb-3">
-                    <input type="radio" class="custom-control-input" id="position2" name="position" value='servent' disabled>
+                    <input type="radio" class="custom-control-input" id="position2" name="position" value='2' disabled>
                     <label class="custom-control-label" for="position2">봉사의 종</label>
                 </div>
                 
                 <div class="custom-control custom-checkbox mb-3">
-                    <input type="checkbox" class="custom-control-input" id="pioneer" name='pioneer' value='pioneer'>
+                    <input type="checkbox" class="custom-control-input" id="pioneer" name='pioneer' value='1'>
                     <label class="custom-control-label" for="pioneer">파이오니아</label>
                 </div>
                 
                 <div class="custom-control custom-radio">
-                    <input type="radio" class="custom-control-input" id="privilege1" name="privilege" value='1' required>
+                    <input type="radio" class="custom-control-input" id="privilege1" name="privileges" value='1' required>
                     <label class="custom-control-label" for="privilege1">수정/관리/야외봉사</label>
                 </div>
                 <div class="custom-control custom-radio">
-                    <input type="radio" class="custom-control-input" id="privilege2" name="privilege" value='2' required>
+                    <input type="radio" class="custom-control-input" id="privilege2" name="privileges" value='2' required>
                     <label class="custom-control-label" for="privilege2">관리/야외봉사</label>
                 </div>
                 <div class="custom-control custom-radio mb-3">
-                    <input type="radio" class="custom-control-input" id="privilege3" name="privilege" value='0' required>
+                    <input type="radio" class="custom-control-input" id="privilege3" name="privileges" value='0' required>
                     <label class="custom-control-label" for="privilege3">야외봉사</label>
                     <div class="invalid-feedback">어떤 권한을 가질지 선택하세요...</div>
                 </div>

@@ -9,11 +9,11 @@ $query = "CREATE TABLE IF NOT EXISTS `users` (
         `user_id` int(11) NOT NULL AUTO_INCREMENT,
         `user_name` varchar(10) NOT NULL,
         `user_password` varchar(45) NOT NULL,
-        `user_privileges` tinyint(4) DEFAULT '0',
+        `user_privileges` tinyint(4) NOT NULL DEFAULT '0',
         `user_phone_number` varchar(15) NOT NULL,
-        `user_pioneer` tinyint(4) DEFAULT '0',
-        `user_male` tinyint(4) DEFAULT '0',
-        `user_position` tinyint(4) DEFAULT '0',
+        `user_pioneer` tinyint(4) NOT NULL DEFAULT '0',
+        `user_male` tinyint(4) NOT NULL DEFAULT '0',
+        `user_position` tinyint(4) NOT NULL DEFAULT '0',
         PRIMARY KEY (`user_id`)
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8";
 $sth = $dbh->exec($query);
@@ -34,7 +34,7 @@ $query = "CREATE TABLE IF NOT EXISTS `maps` (
         `map_id` int(11) NOT NULL AUTO_INCREMENT,
         `map_number` smallint(6) DEFAULT NULL,
         `map_name` varchar(100) NOT NULL,
-        `map_use` tinyint(4) DEFAULT '0',
+        `map_use` tinyint(4) NOT NULL DEFAULT '0',
         PRIMARY KEY (`map_id`)
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8";
 $sth = $dbh->exec($query);
@@ -54,7 +54,7 @@ $sth = $dbh->exec($query);
 $query = "CREATE TABLE IF NOT EXISTS `houses` (
         `house_id` int(11) NOT NULL AUTO_INCREMENT,
         `house_name` varchar(255) DEFAULT NULL,
-        `house_status` tinyint(4) DEFAULT '0',
+        `house_status` tinyint(4) NOT NULL DEFAULT '0',
         `house_date` date DEFAULT NULL,
         `house_date2` date DEFAULT NULL,
         `house_date3` date DEFAULT NULL,
@@ -72,8 +72,9 @@ $query = "select count(*) as cnt from users";
 $sth = $dbh->query($query);
 $count = $sth->fetch(PDO::FETCH_BOTH);
 if (!$count[0]) {
-    $query = "insert into users (user_name, user_password, user_phone_number, user_male)"
-        ." values ('김형제',password('0000'),'010-0000-0000', 1)";
+    $query = "insert into users "
+        ."(user_name, user_password, user_phone_number, user_male, user_privileges, user_position)"
+        ." values ('김형제',password('0000'),'010-0000-0000', 1, 1, 1)";
     $sth = $dbh->exec($query);
 }
 

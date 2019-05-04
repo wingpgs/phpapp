@@ -19,7 +19,7 @@ include('./views/navbar.php');
         <div class='container py-3'><div class='row'>
 
 <?php
-(is_array($class->data['members']) ? $outputHtml = array_reduce($class->data['members'],
+(is_array($this->data['members']) ? $outputHtml = array_reduce($this->data['members'],
     function ($carry, $item) use ($male,$position,$pioneer) 
     {
         $carry .= "

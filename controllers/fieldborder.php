@@ -16,6 +16,6 @@ class FieldBorder
     public function home()
     {
         // view 가져오기
-        include('./views/fieldborder.php');
+        include('./views/fieldborderHome.php');
     }
 }

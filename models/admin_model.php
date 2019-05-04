@@ -8,23 +8,31 @@ class Admin_model
         include_once("dbConnection.php");
     }
 
-    public function getUsers() 
+    public function addUser($data)
     {
         $dbh = dbConnection();
-        $sth = $dbh->query('select * from users;');
-        $count = $sth->rowCount();
-        if ($count) {
-            $results = $sth->fetchAll(PDO::FETCH_ASSOC);
-            return $results;
+
+        (isset($data['position']) ? :$data['position'] = 0);
+        (isset($data['pioneer']) ? :$data['pioneer'] = 0);
+
+        $query = 'insert into users (user_name, user_password, user_phone_number, '
+            .'user_male, user_position, user_pioneer, user_privileges) '
+            .'values (:name,password(:password),:phone_number,:male,:position,:pioneer,:privileges);';
+        $sth = $dbh->prepare($query);
+        $state = $sth->bindParam(':name', $data['name']);
+        $state = $sth->bindParam(':password', $data['password']);
+        $state = $sth->bindParam(':phone_number', $data['phone_number']);
+        $state = $sth->bindParam(':male', $data['male']);
+        $state = $sth->bindParam(':position', $data['position']);
+        $state = $sth->bindParam(':pioneer', $data['pioneer']);
+        $state = $sth->bindParam(':privileges', $data['privileges']);
+        $state = $sth->execute();
+        if ( $state ) {
+            return true;
         } else {
             return false;
         }
-    }
 
-    public function addUser($data)
-    {
-        print_r($data);
-        return 0; 
     }
 
     public function logout()
