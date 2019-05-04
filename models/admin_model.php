@@ -38,7 +38,7 @@ class Admin_model
     public function getUsers() 
     {
         $dbh = dbConnection();
-        $sth = $dbh->query('select * from users;');
+        $sth = $dbh->query('select * from users order by user_name asc;');
         $count = $sth->rowCount();
         if ($count) {
             $results = $sth->fetchAll(PDO::FETCH_ASSOC);
