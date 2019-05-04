@@ -22,7 +22,7 @@ class Members
     public function home()
     {
         // view 가져오기
-        include('./views/membersHome.php');
+        include('./views/members_home.php');
     }
 
 }

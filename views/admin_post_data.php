@@ -1,4 +1,7 @@
 <?php
+if(!defined('URI')){include($_SERVER['DOCUMENT_ROOT'].'/views/404.php');exit;}
+
+
     // alert 색상 설정
     $alert_style = [];
     $alert_style['red'] = 'alert-danger';

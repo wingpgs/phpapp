@@ -17,7 +17,7 @@ class Field
 
     public function home($card_id)
     {
-        include('./views/fieldHome.php');  // html 문서 본문부분 추가
+        include('./views/field_home.php');  // html 문서 본문부분 추가
     }
 
     public function getHouses()
