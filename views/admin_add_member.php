@@ -1,15 +1,15 @@
 <?php
-if(!defined('URI')){include($_SERVER['DOCUMENT_ROOT'].'/views/404.php');exit;}
+if(!defined('URI')){include($_SERVER['DOCUMENT_ROOT'].'/views/templates/404.php');exit;}
 
 // $data['members'] 변수에 배열로 사람들 정보가 건너옴
 // 초기 변수 설정 넘어온 번호가 무슨 의미인지 확인
 
-include('./views/header.php');  // html 문서 시작부분 추가
+include('./views/templates/header.php');  // html 문서 시작부분 추가
 ?>
     </head>
     <body class='container'>
 <?php
-include('./views/navbar.php');
+include('./views/templates/navbar.php');
 ?>
 
         <!-- 여기부터는 내용입니다.-->
@@ -76,7 +76,7 @@ include('./views/navbar.php');
             </form>
         </div>
 <?php
-include('./views/footer.php');  // html 문서 끝부분 추가
+include('./views/templates/footer.php');  // html 문서 끝부분 추가
 ?>
     <script>
         $('#brother').click(function(){

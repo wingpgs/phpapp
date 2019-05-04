@@ -1,13 +1,13 @@
 <?php
-if(!defined('URI')){include($_SERVER['DOCUMENT_ROOT'].'/views/404.php');exit;}
+if(!defined('URI')){include($_SERVER['DOCUMENT_ROOT'].'/views/templates/404.php');exit;}
 
-include('./views/header.php');  // html 문서 시작부분 추가
+include('./views/templates/header.php');  // html 문서 시작부분 추가
 ?>
     </head>
     <body class="container">
 
 <?php
-include('./views/navbar.php');
+include('./views/templates/navbar.php');
 ?>
         <div class='py-2'>
             <div class="alert<?php echo isset($_POST['style']) ? ' '.$_POST['style']: '';
@@ -24,7 +24,7 @@ include('./views/navbar.php');
             </div>
         </div>
 <?php
-include('./views/footer.php');  // html 문서 끝부분 추가
+include('./views/templates/footer.php');  // html 문서 끝부분 추가
 ?>
     </body>
 </html>

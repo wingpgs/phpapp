@@ -1,9 +1,9 @@
 <?php
-if(!defined('URI')){include($_SERVER['DOCUMENT_ROOT'].'/views/404.php');exit;}
+if(!defined('URI')){include($_SERVER['DOCUMENT_ROOT'].'/views/templates/404.php');exit;}
 
 // favicon.ico 요청 처리 우선 해야 함..
 if ($_SERVER['REQUEST_URI'] == '/favicon.ico') {
-    include('./views/204.php');
+    include('./views/templates/204.php');
     exit;
 }
 
@@ -40,7 +40,7 @@ if ($loginChecked) { // 자동 로그인 체크 성공
     switch ($_SERVER['REQUEST_URI']) 
     {
         case '/': // login 실패 했으므로 login 페이지로
-            include('./views/login.php');
+            include('./views/templates/login.php');
             break;
         case '/try/': // test
             include('./test/test.php');

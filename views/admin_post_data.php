@@ -1,5 +1,5 @@
 <?php
-if(!defined('URI')){include($_SERVER['DOCUMENT_ROOT'].'/views/404.php');exit;}
+if(!defined('URI')){include($_SERVER['DOCUMENT_ROOT'].'/views/templates/404.php');exit;}
 
 
     // alert 색상 설정
@@ -20,7 +20,7 @@ if(!defined('URI')){include($_SERVER['DOCUMENT_ROOT'].'/views/404.php');exit;}
             $this->data['post_data_style'] = 'red';
             $this->data['post_data_message'] = '<strong>'.$_POST['name'].'</strong> 입력에 실패했습니다..';
         }
-        include('./views/adminPostData.php');
+        include('./views/admin_post_data.php');
 
     */
 

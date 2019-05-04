@@ -1,5 +1,5 @@
 <?php
-if(!defined('URI')){include($_SERVER['DOCUMENT_ROOT'].'/views/404.php');exit;}
+if(!defined('URI')){include($_SERVER['DOCUMENT_ROOT'].'/views/templates/404.php');exit;}
 ?>
 <!DOCTYPE html>
 <html style="height:100%; overflow:hidden">

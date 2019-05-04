@@ -1,5 +1,5 @@
 <?php
-if(!defined('URI')){include($_SERVER['DOCUMENT_ROOT'].'/views/404.php');exit;}
+if(!defined('URI')){include($_SERVER['DOCUMENT_ROOT'].'/views/templates/404.php');exit;}
 
 class Admin_model
 {
@@ -33,6 +33,19 @@ class Admin_model
             return false;
         }
 
+    }
+
+    public function getUsers() 
+    {
+        $dbh = dbConnection();
+        $sth = $dbh->query('select * from users;');
+        $count = $sth->rowCount();
+        if ($count) {
+            $results = $sth->fetchAll(PDO::FETCH_ASSOC);
+            return $results;
+        } else {
+            return false;
+        }
     }
 
     public function logout()

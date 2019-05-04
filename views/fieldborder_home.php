@@ -1,7 +1,7 @@
 <?php
-if(!defined('URI')){include($_SERVER['DOCUMENT_ROOT'].'/views/404.php');exit;}
+if(!defined('URI')){include($_SERVER['DOCUMENT_ROOT'].'/views/templates/404.php');exit;}
 
-include('./views/header.php');
+include('./views/templates/header.php');
 ?>
         <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic" rel="stylesheet">
         <link href="/public/css/fieldborder.css?ver=1" rel="stylesheet">
@@ -10,7 +10,7 @@ include('./views/header.php');
         <div class="h-100"> <!-- main screen -->
 
 <?php
-include('./views/navbar.php');
+include('./views/templates/navbar.php');
 ?>
 
             <div class="map-container"> <!-- /map-container -->
@@ -27,7 +27,7 @@ include('./views/navbar.php');
             </div> <!-- /map-container -->
         </div> <!-- main screen -->
 <?php
-include('./views/footer.php');
+include('./views/templates/footer.php');
 ?>
         <!-- Placed at the end of the document so the pages load faster -->
         <!-- daum.map api -->

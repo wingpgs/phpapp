@@ -1,5 +1,5 @@
 <?php
-if(!defined('URI')){include($_SERVER['DOCUMENT_ROOT'].'/views/404.php');exit;}
+if(!defined('URI')){include($_SERVER['DOCUMENT_ROOT'].'/views/templates/404.php');exit;}
 
 // $data['maps'] 변수에 배열로 구역 정보가 건너옴
 // 초기 변수 설정 넘어온 번호가 무슨 의미인지 확인
@@ -7,13 +7,13 @@ $male = array(0=>'자매',1=>'형제');
 $position = array(0=>'',1=>'장로',2=>'봉종');
 $pioneer = array(0=>'',1=>'파이오니아');
 
-include('./views/header.php');  // html 문서 시작부분 추가
+include('./views/templates/header.php');  // html 문서 시작부분 추가
 ?>
     </head>
     <body class="container">
 
 <?php
-include('./views/navbar.php');
+include('./views/templates/navbar.php');
 
 
 ?>
@@ -46,7 +46,7 @@ echo $outputHtml;
 
         </div></div>
 <?php
-include('./views/footer.php');  // html 문서 끝부분 추가
+include('./views/templates/footer.php');  // html 문서 끝부분 추가
 ?>
     </body>
 </html>
