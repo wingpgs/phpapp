@@ -10,9 +10,12 @@ include('./views/header.php');  // html 문서 시작부분 추가
 include('./views/navbar.php');
 ?>
         <div class='py-2'>
-            <div class="alert alert-success" role="alert">
-                A simple success alert—check it out!
+            <div class="alert<?php echo isset($_POST['style']) ? ' '.$_POST['style']: '';
+                echo isset($_POST['message']) ? '': ' d-none'?>" role="alert">
+                <?=$_POST['message']?>
             </div>
+
+
             <div class="text-center">
                 <a class="btn btn-primary" href="/admin/addmember/" role="button">구성원추가</a>
                 <a class="btn btn-primary" href="/admin/updatemember/" role="button">구성원수정</a>

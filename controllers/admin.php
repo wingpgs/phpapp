@@ -41,6 +41,15 @@ class Admin
     public function addMemberSubmit ()
     {
         $result = $this->Model->addUser($_POST);
+        $this->data['post_data_uri'] = '/admin/';
+        if ($result) {
+            $this->data['post_data_style'] = 'blue';
+            $this->data['post_data_message'] = '<strong>'.$_POST['name'].'</strong> 입력했습니다.';
+        } else {
+            $this->data['post_data_style'] = 'red';
+            $this->data['post_data_message'] = '<strong>'.$_POST['name'].'</strong> 입력에 실패했습니다..';
+        }
+        include('./views/adminPostData.php');
     }
 
     public function logout ()
