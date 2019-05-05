@@ -19,20 +19,45 @@ class Admin_model
             .'user_male, user_position, user_pioneer, user_privileges) '
             .'values (:name,password(:password),:phone_number,:male,:position,:pioneer,:privileges);';
         $sth = $dbh->prepare($query);
-        $state = $sth->bindParam(':name', $data['name']);
-        $state = $sth->bindParam(':password', $data['password']);
-        $state = $sth->bindParam(':phone_number', $data['phone_number']);
-        $state = $sth->bindParam(':male', $data['male']);
-        $state = $sth->bindParam(':position', $data['position']);
-        $state = $sth->bindParam(':pioneer', $data['pioneer']);
-        $state = $sth->bindParam(':privileges', $data['privileges']);
+        $state = $sth->bindParam(':name', $data['name'], PDO::PARAM_STR);
+        $state = $sth->bindParam(':password', $data['password'], PDO::PARAM_STR);
+        $state = $sth->bindParam(':phone_number', $data['phone_number'], PDO::PARAM_STR);
+        $state = $sth->bindParam(':male', $data['male'], PDO::PARAM_INT);
+        $state = $sth->bindParam(':position', $data['position'], PDO::PARAM_INT);
+        $state = $sth->bindParam(':pioneer', $data['pioneer'], PDO::PARAM_INT);
+        $state = $sth->bindParam(':privileges', $data['privileges'], PDO::PARAM_INT);
         $state = $sth->execute();
         if ( $state ) {
             return true;
         } else {
             return false;
         }
+    }
 
+    public function deleteUser($user_id)
+    {
+        $query = 'delete from users where user_id = '.$user_id.';';
+
+        $dbh = dbConnection();
+        $state = $dbh->exec($query);
+        if ( $state ) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function getUser($user_id) 
+    {
+        $dbh = dbConnection();
+        $sth = $dbh->query('select * from users where user_id = '.$user_id.';');
+        $count = $sth->rowCount();
+        if ($count) {
+            $results = $sth->fetchAll(PDO::FETCH_ASSOC);
+            return $results[0];
+        } else {
+            return false;
+        }
     }
 
     public function getUsers() 
@@ -59,4 +84,33 @@ class Admin_model
         }
         session_destroy();
     }
+
+    public function updateUser($data, $user_id)
+    {
+        $dbh = dbConnection();
+        
+        (isset($data['position']) ? :$data['position'] = 0);
+        (isset($data['pioneer']) ? :$data['pioneer'] = 0);
+        $password_query = strlen($data['password']) > 3 ? ', user_password = password(:password) ' : ' ';
+
+        $query = 'update users set user_name = :name, user_phone_number = :phone_number, '
+            .'user_male = :male, user_position = :position, user_pioneer = :pioneer, '
+            .'user_privileges = :privileges'.$password_query.'where user_id = :id';
+        $sth = $dbh->prepare($query);
+        $state = $sth->bindParam(':name', $data['name'], PDO::PARAM_STR);
+        if (strlen($data['password']) > 3) $state = $sth->bindParam(':password', $data['password'], PDO::PARAM_STR);
+        $state = $sth->bindParam(':phone_number', $data['phone_number'], PDO::PARAM_STR);
+        $state = $sth->bindParam(':male', $data['male'], PDO::PARAM_INT);
+        $state = $sth->bindParam(':position', $data['position'], PDO::PARAM_INT);
+        $state = $sth->bindParam(':pioneer', $data['pioneer'], PDO::PARAM_INT);
+        $state = $sth->bindParam(':privileges', $data['privileges'], PDO::PARAM_INT);
+        $state = $sth->bindParam(':id', $user_id, PDO::PARAM_INT);
+        $state = $sth->execute();
+        if ( $state ) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 }

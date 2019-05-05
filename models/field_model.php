@@ -152,7 +152,7 @@ class Field_model
         $dbh = dbConnection();
         $state = $dbh->exec($query);
         if ( $state ) {
-            return json_encode(ture);
+            return json_encode(true);
         } else {
             return json_encode(false);
         }

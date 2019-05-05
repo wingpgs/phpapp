@@ -18,7 +18,7 @@ include('./views/templates/navbar.php');
 
             <div class="text-center">
                 <a class="btn btn-primary" href="/admin/addmember/" role="button">구성원추가</a>
-                <a class="btn btn-primary" href="/admin/updatemember/" role="button">구성원수정</a>
+                <a class="btn btn-primary" href="/admin/memberlist/" role="button">구성원관리</a>
                 <a class="btn btn-primary" href="/try/" role="button">테스트코드</a>
                 <a class="btn btn-primary" href="/admin/logout/" role="button">Logout</a>
             </div>

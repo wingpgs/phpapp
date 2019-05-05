@@ -14,7 +14,7 @@ include('./views/templates/navbar.php');
 
         <!-- 여기부터는 내용입니다.-->
         <div class='container py-3'>
-            <p class='h6 mb-3'>아래 <span style='color:#dc3545'>빨간색</span> 칸들을 모두 입력하고 확인을 누르세요...</p>
+            <p class='h6 mb-3'>아래 <span style='color:#dc3545'>빨간색</span> 칸들을 모두 입력하고 <span class='text-primary'>확인</span>을 누르세요...</p>
             <form class='was-validated' action='/admin/addMemberSubmit/' method='post' autocomplete='off'>
                 <div class='form-group'>
                     <input id='user_name' class='form-control' name='name' type='text' placeholder='이름' required>
