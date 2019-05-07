@@ -10,7 +10,7 @@ class Home_model
 
     public function getMaps() 
     {
-        $query = 'select * from maps where map_use = 1;';
+        $query = 'select * from maps where map_use = 1 order by map_number asc;';
         $dbh = dbConnection();
         $sth = $dbh->query($query);
         $count = $sth->rowCount();

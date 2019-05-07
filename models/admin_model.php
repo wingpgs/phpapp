@@ -8,6 +8,23 @@ class Admin_model
         include_once("dbConnection.php");
     }
 
+    public function addMap($data)
+    {
+        $dbh = dbConnection();
+
+
+        $query = 'insert into maps (map_name, map_number, map_use) values (:name,:number,1);';
+        $sth = $dbh->prepare($query);
+        $state = $sth->bindParam(':name', $data['name'], PDO::PARAM_STR);
+        $state = $sth->bindParam(':number', $data['number'], PDO::PARAM_STR);
+        $state = $sth->execute();
+        if ( $state ) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public function addUser($data)
     {
         $dbh = dbConnection();
@@ -34,6 +51,19 @@ class Admin_model
         }
     }
 
+    public function deleteMap($map_id)
+    {
+        $query = 'delete from maps where map_id = '.$map_id.';';
+
+        $dbh = dbConnection();
+        $state = $dbh->exec($query);
+        if ( $state ) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public function deleteUser($user_id)
     {
         $query = 'delete from users where user_id = '.$user_id.';';
@@ -42,6 +72,32 @@ class Admin_model
         $state = $dbh->exec($query);
         if ( $state ) {
             return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function getMap($map_id) 
+    {
+        $dbh = dbConnection();
+        $sth = $dbh->query('select * from maps where map_id = '.$map_id.';');
+        $count = $sth->rowCount();
+        if ($count) {
+            $results = $sth->fetchAll(PDO::FETCH_ASSOC);
+            return $results[0];
+        } else {
+            return false;
+        }
+    }
+
+    public function getMaps() 
+    {
+        $dbh = dbConnection();
+        $sth = $dbh->query('select * from maps order by map_number asc;');
+        $count = $sth->rowCount();
+        if ($count) {
+            $results = $sth->fetchAll(PDO::FETCH_ASSOC);
+            return $results;
         } else {
             return false;
         }
@@ -85,6 +141,23 @@ class Admin_model
         session_destroy();
     }
 
+    public function updateMap($data, $map_id)
+    {
+        $dbh = dbConnection();
+
+        $query = 'update maps set map_name = :name, map_number = :number where map_id = :id';
+        $sth = $dbh->prepare($query);
+        $state = $sth->bindParam(':name', $data['name'], PDO::PARAM_STR);
+        $state = $sth->bindParam(':number', $data['number'], PDO::PARAM_STR);
+        $state = $sth->bindParam(':id', $map_id, PDO::PARAM_INT);
+        $state = $sth->execute();
+        if ( $state ) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public function updateUser($data, $user_id)
     {
         $dbh = dbConnection();
@@ -112,5 +185,4 @@ class Admin_model
             return false;
         }
     }
-
 }
