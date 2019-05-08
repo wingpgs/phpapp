@@ -11,12 +11,6 @@ $( function () { // 최초 실행 함수  모두 로딩되면 바로 실행됨.
         console.log(mouseEvent.latLng);
     });
 
-    // 이전 줌 레벨 저장
-    daum.maps.event.addListener(DAUM_MAP, 'zoom_start', function() {
-        zoomStart = DAUM_MAP.getLevel();
-        console.log(zoomStart);
-    });
-
     // 줌 레벨이 7-8 사이에 변하면 지도 구역 표시 바꾸기
     daum.maps.event.addListener(DAUM_MAP, 'zoom_changed', function() {        
         if (zoomStart >= 8 && DAUM_MAP.getLevel() <= 7) {
@@ -56,6 +50,7 @@ $( function () { // 최초 실행 함수  모두 로딩되면 바로 실행됨.
                 polygons = emdLoop( options, geometries, 0, geometries.length - 1 );
             } );
         }
+        zoomStart = DAUM_MAP.getLevel();
     });
 
     // 구역 경계 읍면 좌표 가져오기
