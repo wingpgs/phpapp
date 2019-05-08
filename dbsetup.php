@@ -35,6 +35,7 @@ $query = "CREATE TABLE IF NOT EXISTS `maps` (
         `map_number` smallint(6) DEFAULT NULL,
         `map_name` varchar(100) NOT NULL,
         `map_use` tinyint(4) NOT NULL DEFAULT '0',
+        `map_date` date DEFAULT NULL,
         PRIMARY KEY (`map_id`)
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8";
 $sth = $dbh->exec($query);

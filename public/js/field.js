@@ -699,8 +699,9 @@ $('#input-submit').click(function() {  // 추가 입력
             url: '/field/insert/',
             data: data
         }).done(function (data) {
+            //console.log(data);
             if (data != 'false') { 
-                var returnValue = JSON.parse(data);
+                var returnValue = data; //JSON.parse(data);
                 var setdata = returnValue[0];
                 if (selected[1] === null) {
                     myCard.addBuilding(returnValue);
