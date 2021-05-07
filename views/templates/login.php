@@ -29,7 +29,7 @@ if(!defined('URI')){include($_SERVER['DOCUMENT_ROOT'].'/views/templates/404.php'
     <body class="text-center">
         <form class="form-signin" method="POST" action="/logincheck/">
             <!-- <img class="mb-4" src="/public/img/img.png" alt="" width="72" height="72"> -->
-            <h1 class="h3 mb-5 font-weight-normal text-primary">천안 목천</h1>
+            <h1 class="h3 mb-5 font-weight-normal text-primary">천안 풍세</h1>
             <label for="inputEmail" class="sr-only">이름</label>
             <input autocomplete="off" type="name" name="name" id="inputName" class="form-control" placeholder="이름" required autofocus>
             <label for="inputPassword" class="sr-only">암호</label>
