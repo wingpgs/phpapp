@@ -35,7 +35,7 @@ $query = "CREATE TABLE IF NOT EXISTS `maps` (
         `map_number` smallint(6) DEFAULT NULL,
         `map_name` varchar(100) NOT NULL,
         `map_use` tinyint(4) NOT NULL DEFAULT '0',
-        `map_date` date DEFAULT NULL,
+        `map_date` varchar(20) DEFAULT NULL,
         PRIMARY KEY (`map_id`)
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8";
 $sth = $dbh->exec($query);
@@ -56,9 +56,9 @@ $query = "CREATE TABLE IF NOT EXISTS `houses` (
         `house_id` int(11) NOT NULL AUTO_INCREMENT,
         `house_name` varchar(255) DEFAULT NULL,
         `house_status` tinyint(4) NOT NULL DEFAULT '0',
-        `house_date` date DEFAULT NULL,
-        `house_date2` date DEFAULT NULL,
-        `house_date3` date DEFAULT NULL,
+        `house_date` varchar(20) DEFAULT NULL,
+        `house_date2` varchar(20) DEFAULT NULL,
+        `house_date3` varchar(20) DEFAULT NULL,
         `building_id` int(11) NOT NULL,
         `map_id` int(11) NOT NULL,
         PRIMARY KEY (`house_id`),
