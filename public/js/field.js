@@ -151,8 +151,8 @@ house.prototype.setListClickListener = function (building, house) { // 리스트
 					}
 					selected[0] =  building;
                     //building.info_window.open(NAVER_MAP, building.marker);
-                    DAUM_MAP.setCenter(building.marker.getPosition());
-                    building.info_window.open(DAUM_MAP, building.marker);
+                    KAKAO_MAP.setCenter(building.marker.getPosition());
+                    building.info_window.open(KAKAO_MAP, building.marker);
 				}
                 var val = $(":input:radio[name=markers-visibility]:checked").val();
                 if ( val == "one" ) { // 선택된 마커 하나만 표시하기 옵션 상태일 때 보이는 마커 변경.
@@ -193,11 +193,11 @@ function building (card,data,order) {  // 각 건물 객체
 	// 모든 변수 할당 끝... ㅎㅎ
 	
 	// 이제 건물 마커 찍고 인포 윈도우 만들고...
-    this.coord = new daum.maps.LatLng(Number(this.lat),Number(this.lng));
-    this.marker = new daum.maps.Marker({
-      map: DAUM_MAP,
+    this.coord = new kakao.maps.LatLng(Number(this.lat),Number(this.lng));
+    this.marker = new kakao.maps.Marker({
+      map: KAKAO_MAP,
       position: this.coord,
-      image: marker_icon_daum.red,
+      image: marker_icon_kakao.red,
     });
     
 	for (var i = 0; i < data.length; i++) { // 아 어렵다.. 가구(집) 객체 등록
@@ -207,10 +207,10 @@ function building (card,data,order) {  // 각 건물 객체
     for ( var j = 0; j < this.houses.length; j ++ ) {  // 마커 색상 선택 만난 곳 못만난곳 등등..
       // checked = -1 방문금지, 0 해야함, 1 만남, 2 못만남
       if ( this.houses[j].checked == 0 ) {
-        this.marker.setImage(marker_icon_daum.blue);
+        this.marker.setImage(marker_icon_kakao.blue);
         break;
       } else if ( this.houses[j].checked == 2 ) {
-        this.marker.setImage(marker_icon_daum.yellow);
+        this.marker.setImage(marker_icon_kakao.yellow);
       }
     }
     
@@ -219,7 +219,7 @@ function building (card,data,order) {  // 각 건물 객체
 }
 
 building.prototype.setMarkerClickListener = function (card, building) { // 건물 클릭 리스너 정의 ** 클로저 관련 내용 숙지
-	daum.maps.event.addListener(building.marker, 'click', function(e) {
+	kakao.maps.event.addListener(building.marker, 'click', function(e) {
 		if ( $( "#modification" ).prop( "checked" ) ) {  // 수정 체크 상태
 			selected[1] = building; // 선택된 건물 임시 저장
 			//$( '#input-latlng' ).text(e.coord);
@@ -264,7 +264,7 @@ building.prototype.setMarkerClickListener = function (card, building) { // 건�
 				}
                 $( "#houses-list" ).animate({scrollTop:list_offset[1] - list_offset[0]}, 500); // 선택된 건물로 목록 스크롤..
 				selected[0] =  building; // 선택된 건물 저장 다음 번 클릭 이벤트 위해서.
-				building.info_window.open(DAUM_MAP, building.marker); // 인포 윈도우 띄우기
+				building.info_window.open(KAKAO_MAP, building.marker); // 인포 윈도우 띄우기
 			}
             var val = $(":input:radio[name=markers-visibility]:checked").val();
             if ( val == "one" ) { // 선택된 마커 하나만 표시하기 옵션 상태일 때 보이는 마커 변경.
@@ -285,7 +285,7 @@ building.prototype.setInfoWindow = function () {// 인포 윈도우 수정
 	this.setContentString();
 	if (this.info_window === null) {
 		//this.info_window = new naver.maps.InfoWindow({content: this.content_string,color: "black"});
-        this.info_window = new daum.maps.InfoWindow({
+        this.info_window = new kakao.maps.InfoWindow({
           content: this.content_string,
         });
         
@@ -358,14 +358,14 @@ function card (data) { // 카드 객체 정의
 	}
 	
 	if (this.buildings_coord.length != 0) { // 지도 위치 옮기기 건물 마커가 화면에 모두 들어오는 크기로 이동
-      var map_bound = new daum.maps.LatLngBounds();
+      var map_bound = new kakao.maps.LatLngBounds();
       for ( var i = 0; i < this.buildings_coord.length; i++ ) {
         map_bound.extend(this.buildings_coord[i]);
       }
-      DAUM_MAP.setBounds(map_bound);
+      KAKAO_MAP.setBounds(map_bound);
 	}
 	
-	daum.maps.event.addListener(DAUM_MAP, 'click',function(e) { // 맵 클릭 리스너
+	kakao.maps.event.addListener(KAKAO_MAP, 'click',function(e) { // 맵 클릭 리스너
 		if ( $( "#modification" ).prop( "checked" ) ) {
 			getAddress(e.latLng);
 			selected[1] = null;
@@ -443,18 +443,18 @@ card.prototype.setMarkerIcon = function () {
             }
         }
         if ( marker_icon_state[i] == 1 ) {
-            this.buildings[i].marker.setImage(marker_icon_daum.red);
+            this.buildings[i].marker.setImage(marker_icon_kakao.red);
         } else if ( marker_icon_state[i] == 2 ) {
-            this.buildings[i].marker.setImage(marker_icon_daum.yellow);
+            this.buildings[i].marker.setImage(marker_icon_kakao.yellow);
         } else {
-            this.buildings[i].marker.setImage(marker_icon_daum.blue);
+            this.buildings[i].marker.setImage(marker_icon_kakao.blue);
         }
     }
 }
 
 card.prototype.setMarkerClusterer = function () { // 마커 클러스터링 세팅
-    this.markerClusterer = new daum.maps.MarkerClusterer({
-        map: DAUM_MAP, // 마커들을 클러스터로 관리하고 표시할 지도 객체 
+    this.markerClusterer = new kakao.maps.MarkerClusterer({
+        map: KAKAO_MAP, // 마커들을 클러스터로 관리하고 표시할 지도 객체 
         averageCenter: true, // 클러스터에 포함된 마커들의 평균 위치를 클러스터 마커 위치로 설정 
         minLevel: 2, // 클러스터 할 최소 지도 레벨 
         markers: this.buildings_marker,
@@ -470,13 +470,13 @@ card.prototype.setMarkersVisibility = function () {
     this.visible_markers = []; // 마커클러스터러에 넣을 마커 모음
     if ( val == "all" ) {
         for ( var i = 0; i < this.buildings_marker.length; i++ ) {
-        this.buildings_marker[i].setMap(DAUM_MAP);
+        this.buildings_marker[i].setMap(KAKAO_MAP);
         this.visible_markers.push(this.buildings_marker[i]);
         }
     } else if ( val == "one" ) {
         for ( var i = 0; i < this.buildings_marker.length; i++ ) {
         if ( this.buildings[i] == selected[0] ) {
-            this.buildings_marker[i].setMap(DAUM_MAP);
+            this.buildings_marker[i].setMap(KAKAO_MAP);
             this.visible_markers.push(this.buildings_marker[i]);
         } else {
             this.buildings_marker[i].setMap(null);
@@ -803,7 +803,7 @@ $(document).ready( function() {  // 여기가 시작.
     
     var uriArray = decodeURI(window.location.pathname).split('/');
 
-    initDaumMap();
+    initKakaoMap();
     
     var data = {}; data.map_id = uriArray[3];
     $.ajax({
@@ -906,9 +906,9 @@ function closeSelectLayer(){  // 카드 선택창 닫기 함수
 }
 
 function getAddress(e) { // 좌표에서 주소 가져와서 입력창에 주소에 넣어주기.
-    var geocoder = new daum.maps.services.Geocoder();
+    var geocoder = new kakao.maps.services.Geocoder();
     var callback = function(result, status) {
-        if (status === daum.maps.services.Status.OK) {
+        if (status === kakao.maps.services.Status.OK) {
             if ( result[0].road_address == null ) {
                 var address = result[0].address.region_3depth_name + ' ' + result[0].address.main_address_no;
                 if ( result[0].address.sub_address_no != '' ) {
@@ -967,16 +967,16 @@ function compareTime() {  // 로컬 스토리지에서 시간 불러와서 지�
 }
 
 { // 다음 지도 관련 함수들 //
-    function initDaumMap () {   // 다음 지도 시작
+    function initKakaoMap () {   // 다음 지도 시작
         var container = document.getElementById('map');
         var options = {
-        center: new daum.maps.LatLng(36.71659985578935, 127.11460590440998),
+        center: new kakao.maps.LatLng(36.71659985578935, 127.11460590440998),
         level: 8
         };
             
-        DAUM_MAP = new daum.maps.Map(container, options);
-        //DAUM_MAP.addOverlayMapTypeId(daum.maps.MapTypeId.OVERLAY);
-        //DAUM_MAP.removeOverlayMapTypeId(daum.maps.MapTypeId.OVERLAY);
+        KAKAO_MAP = new kakao.maps.Map(container, options);
+        //KAKAO_MAP.addOverlayMapTypeId(kakao.maps.MapTypeId.OVERLAY);
+        //KAKAO_MAP.removeOverlayMapTypeId(kakao.maps.MapTypeId.OVERLAY);
         // 오버레이 종류 OVERLAY TERRAIN TRAFFIC BICYCLE BICYCLE_HYBRID USE_DISTRICT
     }
 
@@ -984,11 +984,11 @@ function compareTime() {  // 로컬 스토리지에서 시간 불러와서 지�
         var roadmapControl = document.getElementById('btnRoadmap');
         var skyviewControl = document.getElementById('btnSkyview'); 
         if (maptype === 'roadmap') {
-            DAUM_MAP.setMapTypeId(daum.maps.MapTypeId.ROADMAP);    
+            KAKAO_MAP.setMapTypeId(kakao.maps.MapTypeId.ROADMAP);    
             roadmapControl.className = 'selected_btn';
             skyviewControl.className = 'btn';
         } else {
-            DAUM_MAP.setMapTypeId(daum.maps.MapTypeId.HYBRID);    
+            KAKAO_MAP.setMapTypeId(kakao.maps.MapTypeId.HYBRID);    
             skyviewControl.className = 'selected_btn';
             roadmapControl.className = 'btn';
         }
@@ -996,12 +996,12 @@ function compareTime() {  // 로컬 스토리지에서 시간 불러와서 지�
     
     // 지도 확대, 축소 컨트롤에서 확대 버튼을 누르면 호출되어 지도를 확대하는 함수입니다
     function zoomIn() {
-        DAUM_MAP.setLevel(DAUM_MAP.getLevel() - 1,{animate: {duration: 300}});
+        KAKAO_MAP.setLevel(KAKAO_MAP.getLevel() - 1,{animate: {duration: 300}});
     }
     
     // 지도 확대, 축소 컨트롤에서 축소 버튼을 누르면 호출되어 지도를 확대하는 함수입니다
     function zoomOut() {
-        DAUM_MAP.setLevel(DAUM_MAP.getLevel() + 1,{animate: {duration: 300}});
+        KAKAO_MAP.setLevel(KAKAO_MAP.getLevel() + 1,{animate: {duration: 300}});
     }
 } // 다음 지도 관련 함수들 //
 
@@ -1018,13 +1018,13 @@ var marker_color = {};
     marker_color.red = 'https://lh3.googleusercontent.com/RrE01GyjA-A501f4in4H_pejn73_uOgNy7tfAA9RqeDKZqLNM_X7yjOWnPrO42wxr5SW_s3sjkC5FC6kSWoH9ZIAium0lYguwODFjUI0UjJD4GoiK3Bb8Z5xX8lXA7UC4vYjwDLI-qKdeyXVJ_4AefE9y5LtiWzptXY92GkTSCm39WHvvVOTBFY1cWdlqPCoyl-nGSDMPZMyR8Uwmkhq6Zoch8HaJ5Cyf6otn5B2UTdBx3aMZWUnrFtrunaZRcnEbK8RoO-7sYLimlCeRBvqXy7OkmL3SQVtKs8jK8IWINOT0Fb-ZEZ6utQd_fP1eQwHWkR-o5_FKbXKEZSfG8Ekr0zIucmNhXcjUUMdMw8XhF1z_zySkQ4Ts8hn4zQZafWeMNLdY3jd7r8HeLkykHyvK6Y2wzUrX-_CD7IHOolJw1BFLSWXDG25nl8LU42e8IYgXfNrRvF8RM4No_wlSKYuvb1YKGbkRVkGhamnStTvtUJqt7FSrWzrTgWQLnG1abhTK-vNbukHHEDx4yiPRx2zXVGEWJgssPUdjgpnQSnZndrMfR-IVqinkYRGEOaevRXrnRklJr-8vfjdQ7dlJQWDacxWYx_bbblpFREzj3k9G4437IdvLnpeYiLLkiTcAQIun8Uh5IWtpcPtwVDI1XLGgWLlwSJW58sWvg=s32-no';
     marker_color.purple = 'https://lh3.googleusercontent.com/rmFBn48XlbPVHS7YrrktUv_z90Pt9SpDZZe0DbC-p4hjDg6BVRkI4GH47VuY1hFXF9Ybm22U96p7dCT5A2QFXDj_FyMxjRQ6qmUQWOY1AmghdIevDWrnAjhGs5vYqxsd3YBV2au1dsDAPLc4-7VFs3vD-R6qwzRejP3aWaj18Yw38bjII-BPMGuJ-On6hLfsJQCY6hasuvAfn3mG5WHbJVz2WxswubYqJlDdYv7UMEbjDJAdFb0JIVaAL1lHrZ35DA06TEQIFeOSCm4PpFH7L1f4xHqgP-Eu_jdRuiIYVeC_SYJx8dcmBAkHURebc--R3AE5Rz_U1ho4j7w27NCLCO11P_3yG1u8fMiGrxKF3bPQSVglFMZzUKPpBa9x2xYoLba59j80YzSjH27mmnKhPuGStUt_mWSnCiTBwRM_FQbFIH9V9IUlMmSex0RCgNGnuh6uEqezadXtI0kVoMUekcR8L7xjf1PH-WXpI6OJEdytUid4GWUmU13tz9WibUrl4JUzDR6dNYt7TVEDns6i-blgqhMGp_XJOfBWqBaYfBa3jIKZv-QUuZ-w8gQkgn9JiJf_pspzHKc-dJ0gE5FsIygdadMNWpMyIeSeAD4nocZlnKN0MLdOQTQcH_Y8vJ-lyqkwdY5GqXqgSDzhnxqlDFqfu6SeG9CeMw=s32-no';
 
-var marker_icon_daum = {};
-    marker_icon_daum.green = new daum.maps.MarkerImage(marker_color.green, new daum.maps.Size(32,32), {offset: new daum.maps.Point(16,32)});
-    marker_icon_daum.red = new daum.maps.MarkerImage(marker_color.red, new daum.maps.Size(32,32), {offset: new daum.maps.Point(16,32)});
-    marker_icon_daum.blue = new daum.maps.MarkerImage(marker_color.blue, new daum.maps.Size(32,32), {offset: new daum.maps.Point(16,32)});
-    marker_icon_daum.black = new daum.maps.MarkerImage(marker_color.black, new daum.maps.Size(32,32), {offset: new daum.maps.Point(16,32)});
-    marker_icon_daum.purple = new daum.maps.MarkerImage(marker_color.purple, new daum.maps.Size(32,32), {offset: new daum.maps.Point(16,32)});
-    marker_icon_daum.yellow = new daum.maps.MarkerImage(marker_color.yellow, new daum.maps.Size(32,32), {offset: new daum.maps.Point(16,32)});
+var marker_icon_kakao = {};
+    marker_icon_kakao.green = new kakao.maps.MarkerImage(marker_color.green, new kakao.maps.Size(32,32), {offset: new kakao.maps.Point(16,32)});
+    marker_icon_kakao.red = new kakao.maps.MarkerImage(marker_color.red, new kakao.maps.Size(32,32), {offset: new kakao.maps.Point(16,32)});
+    marker_icon_kakao.blue = new kakao.maps.MarkerImage(marker_color.blue, new kakao.maps.Size(32,32), {offset: new kakao.maps.Point(16,32)});
+    marker_icon_kakao.black = new kakao.maps.MarkerImage(marker_color.black, new kakao.maps.Size(32,32), {offset: new kakao.maps.Point(16,32)});
+    marker_icon_kakao.purple = new kakao.maps.MarkerImage(marker_color.purple, new kakao.maps.Size(32,32), {offset: new kakao.maps.Point(16,32)});
+    marker_icon_kakao.yellow = new kakao.maps.MarkerImage(marker_color.yellow, new kakao.maps.Size(32,32), {offset: new kakao.maps.Point(16,32)});
 
 // 초기 설정. 배열, 변수 선언.
 
