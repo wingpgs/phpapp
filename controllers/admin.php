@@ -57,7 +57,7 @@ class Admin
         include('./views/admin_postdata.php');
     }
 
-    public function cardList ()
+    public function listCard ()
     {
         // data 준비
         $this->data['title'] = '구역목록';
@@ -66,7 +66,7 @@ class Admin
         $this->data['maps'] = $results;
 
         // view 가져오기
-        include('./views/admin_cardlist.php');
+        include('./views/admin_listcard.php');
     }
 
     public function deleteCard ($map_id)
@@ -121,7 +121,7 @@ class Admin
         echo '<meta http-equiv="refresh" content="0;url=/" />';
     }
 
-    public function memberList ()
+    public function listMember ()
     {
         // data 준비
         $this->data['title'] = '구성원목록';
@@ -130,7 +130,7 @@ class Admin
         $this->data['members'] = $results;
 
         // view 가져오기
-        include('./views/admin_memberlist.php');
+        include('./views/admin_listmember.php');
     }
 
     public function updateCard ($map_id)

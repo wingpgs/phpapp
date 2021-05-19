@@ -18,9 +18,9 @@ include('./views/templates/navbar.php');
 
             <div class="text-center">
                 <a class="btn btn-primary" href="/admin/addmember/" role="button">구성원추가</a>
-                <a class="btn btn-primary" href="/admin/memberlist/" role="button">구성원관리</a>
+                <a class="btn btn-primary" href="/admin/listmember/" role="button">구성원관리</a>
                 <a class="btn btn-primary" href="/admin/addcard/" role="button">구역추가</a>
-                <a class="btn btn-primary" href="/admin/cardlist/" role="button">구역관리</a>
+                <a class="btn btn-primary" href="/admin/listcard/" role="button">구역관리</a>
                 <a class="btn btn-primary" href="/try/" role="button">테스트코드</a>
                 <a class="btn btn-primary" href="/admin/logout/" role="button">Logout</a>
             </div>
