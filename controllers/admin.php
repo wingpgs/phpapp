@@ -17,7 +17,7 @@ class Admin
         $this->data['title'] = '구역추가';
 
         // view 가져오기
-        include('./views/admin_add_card.php');
+        include('./views/admin_addcard.php');
     }
 
     public function addCardSubmit ()
@@ -40,7 +40,7 @@ class Admin
         $this->data['title'] = '구성원추가';
 
         // view 가져오기
-        include('./views/admin_add_member.php');
+        include('./views/admin_addmember.php');
     }
 
     public function addMemberSubmit ()
@@ -54,7 +54,7 @@ class Admin
             $this->data['post_data_style'] = 'red';
             $this->data['post_data_message'] = '<strong>'.$_POST['name'].'</strong> 입력에 실패했습니다..';
         }
-        include('./views/admin_post_data.php');
+        include('./views/admin_postdata.php');
     }
 
     public function cardList ()
@@ -66,7 +66,7 @@ class Admin
         $this->data['maps'] = $results;
 
         // view 가져오기
-        include('./views/admin_card_list.php');
+        include('./views/admin_cardlist.php');
     }
 
     public function deleteCard ($map_id)
@@ -84,7 +84,7 @@ class Admin
             $this->data['post_data_style'] = 'red';
             $this->data['post_data_message'] = '구역 삭제에 실패했습니다..';
         }
-        include('./views/admin_post_data.php');
+        include('./views/admin_postdata.php');
     }
 
     public function deleteMember ($user_id)
@@ -102,7 +102,7 @@ class Admin
             $this->data['post_data_style'] = 'red';
             $this->data['post_data_message'] = '사용자 삭제에 실패했습니다..';
         }
-        include('./views/admin_post_data.php');
+        include('./views/admin_postdata.php');
     }
 
     public function home()
@@ -130,7 +130,7 @@ class Admin
         $this->data['members'] = $results;
 
         // view 가져오기
-        include('./views/admin_member_list.php');
+        include('./views/admin_memberlist.php');
     }
 
     public function updateCard ($map_id)
@@ -142,7 +142,7 @@ class Admin
         $this->data['map'] = $result;
 
         // view 가져오기
-        include('./views/admin_update_card.php');
+        include('./views/admin_updatecard.php');
     }
 
     public function updateCardSubmit ($map_id)
@@ -156,7 +156,7 @@ class Admin
             $this->data['post_data_style'] = 'red';
             $this->data['post_data_message'] = '<strong>'.$_POST['name'].'</strong> 수정에 실패했습니다..';
         }
-        include('./views/admin_post_data.php');
+        include('./views/admin_postdata.php');
     }
 
     public function updateMember ($user_id)
@@ -168,7 +168,7 @@ class Admin
         $this->data['member'] = $result;
 
         // view 가져오기
-        include('./views/admin_update_member.php');
+        include('./views/admin_updatemember.php');
     }
 
     public function updateMemberSubmit ($user_id)
@@ -182,6 +182,6 @@ class Admin
             $this->data['post_data_style'] = 'red';
             $this->data['post_data_message'] = '<strong>'.$_POST['name'].'</strong> 수정에 실패했습니다..';
         }
-        include('./views/admin_post_data.php');
+        include('./views/admin_postdata.php');
     }
 }
