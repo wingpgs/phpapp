@@ -1,7 +1,7 @@
 <?php
 if(!defined('URI')){include($_SERVER['DOCUMENT_ROOT'].'/views/templates/404.php');exit;}
 
-$navLink = ['home','mcfield','members','admin'];
+$navLink = ['home','fieldborder','members','admin'];
 
 $active = array_map( function ($value) 
 {
